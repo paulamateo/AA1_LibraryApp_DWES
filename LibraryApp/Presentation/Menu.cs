@@ -2,8 +2,13 @@ using LibraryApp.Business;
 
 namespace LibraryApp.Presentation {
     public class Menu {
-        public void DisplayPrincipalMenu() {
-            Console.WriteLine("BIBLIOTECA MULTIMEDIA");
+
+        public static void Title() {
+            Console.WriteLine("BIBLIOTECA MULTIMEDIA 'El Almacén de Historias'");
+            Console.WriteLine("¡Bienvenido!");
+        }
+        
+        public static void DisplayPrincipalMenu() {
             Console.WriteLine("1 - Iniciar sesión");
             Console.WriteLine("2 - Crear cuenta");
             Console.WriteLine("3 - Salir");
