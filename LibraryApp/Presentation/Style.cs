@@ -6,6 +6,10 @@ namespace LibraryApp.Presentation {
             AnsiConsole.MarkupLine("[red]{0}[/]", message);
         }
 
+        public static void PrintGood(string message) {
+            AnsiConsole.MarkupLine("[green]{0}[/]", message);
+        }
+
         public static void PrintPrincipalMenu() {
 
         }

@@ -14,18 +14,31 @@ namespace LibraryApp.Presentation {
             Console.WriteLine("3 - Salir");
         }
 
-        public void Login() {
+        public static void Login() {
             Console.WriteLine("Correo electrónico:");
             Console.WriteLine("Contraseña:");
         }
 
-        public void SignUp() {
+        public static void CreateNewAccount() {
+            Console.WriteLine("CREAR CUENTA");
             Console.WriteLine("Nombre:");
+            string? name = Console.ReadLine();
             Console.WriteLine("Apellidos:");
+            string? lastname = Console.ReadLine();
             Console.WriteLine("Correo electrónico");
+            string? email = Console.ReadLine();
             Console.WriteLine("Teléfono:");
+            int phoneNumber = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Contraseña:");
+            string? password = Console.ReadLine();
             Console.WriteLine("Confirmar contraseña:");
+            string? secondPassword = Console.ReadLine();
+            bool accountCreated = LibraryService.AddUser(name, lastname, email, password, phoneNumber);
+            if (accountCreated) {
+                Style.PrintGood("Cuenta creada exitosamente.\n");
+            } else{
+                Style.PrintError("Este correo electrónico ya está asociado a una cuenta.\n");
+            }
         }
 
         public void DisplaySecondMenu(string name) {

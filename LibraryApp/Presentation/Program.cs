@@ -12,9 +12,12 @@ while(!exit) {
         Console.WriteLine("");
         switch(option) {
             case 1:
+                // Menu.Login();
+                LibraryService.ViewUserDictionary();
                 //Iniciar sesión
                 break;
-            case 2:
+            case 2: 
+                Menu.CreateNewAccount();
                 //Crear cuenta
                 break;
             case 3:
