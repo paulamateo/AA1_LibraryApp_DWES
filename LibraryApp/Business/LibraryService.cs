@@ -1,5 +1,7 @@
-namespace LibraryApp.Business;
+﻿using LibraryApp.Data;
 
-public class LibraryService {
-
+namespace LibraryApp.Business {
+    public class LibraryService : ILibraryService {
+        //excepciones aquí
+    }
 }

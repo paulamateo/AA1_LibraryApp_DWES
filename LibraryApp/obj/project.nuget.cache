@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "of5ueG9MouIsZ7U1f1Ko65Wu2AUQclscecb6CzETGih3VtmqXg+LtmsHqJ5uUbC1OO5UREjtUSlzfDWgaop1gw==",
+  "dgSpecHash": "W7lOAhtXUiJDANAP4j2Fe2yReN0rwRoLn9f04b/nMtOvU7zEBLPe8V24Wcg+vpiTo2FxZ4o5LZvqJo/VxppCqw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\S2-PC00\\Documents\\AA1_Biblioteca_2DAW\\LibraryApp\\LibraryApp.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\paula\\Documents\\LibraryApp\\LibraryApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\paula\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.24\\microsoft.netcore.app.ref.6.0.24.nupkg.sha512",
+    "C:\\Users\\paula\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.24\\microsoft.windowsdesktop.app.ref.6.0.24.nupkg.sha512",
+    "C:\\Users\\paula\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.24\\microsoft.aspnetcore.app.ref.6.0.24.nupkg.sha512",
+    "C:\\Users\\paula\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.24\\microsoft.netcore.app.host.win-x64.6.0.24.nupkg.sha512"
+  ],
   "logs": []
 }

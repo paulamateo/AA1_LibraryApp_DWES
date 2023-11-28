@@ -1,0 +1,107 @@
+{
+  "version": 3,
+  "targets": {
+    "net7.0": {
+      "LibraryApp.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "LibraryApp.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/LibraryApp.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LibraryApp.Data.dll": {}
+        }
+      },
+      "LibraryApp.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/LibraryApp.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LibraryApp.Models.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "LibraryApp.Data/1.0.0": {
+      "type": "project",
+      "path": "../Data/LibraryApp.Data.csproj",
+      "msbuildProject": "../Data/LibraryApp.Data.csproj"
+    },
+    "LibraryApp.Models/1.0.0": {
+      "type": "project",
+      "path": "../Models/LibraryApp.Models.csproj",
+      "msbuildProject": "../Models/LibraryApp.Models.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net7.0": [
+      "LibraryApp.Data >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\paula\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\paula\\Documents\\LibraryApp\\Business\\LibraryApp.Business.csproj",
+      "projectName": "LibraryApp.Business",
+      "projectPath": "C:\\Users\\paula\\Documents\\LibraryApp\\Business\\LibraryApp.Business.csproj",
+      "packagesPath": "C:\\Users\\paula\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\paula\\Documents\\LibraryApp\\Business\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\paula\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net7.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "projectReferences": {
+            "C:\\Users\\paula\\Documents\\LibraryApp\\Data\\LibraryApp.Data.csproj": {
+              "projectPath": "C:\\Users\\paula\\Documents\\LibraryApp\\Data\\LibraryApp.Data.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net7.0": {
+        "targetAlias": "net7.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.310\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
