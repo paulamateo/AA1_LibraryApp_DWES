@@ -5,18 +5,6 @@ using LibraryApp.Models;
 namespace LibraryApp.Business {
     public class LibraryService : ILibraryService {
 
-        public static void ViewUserDictionary() {
-            Console.WriteLine("CONTENIDO DEL DICCIONARIO DE USUARIOS:");
-
-            foreach (var item in LibraryRepository.UsersAccount) {
-                Console.WriteLine($"Email: {item.Key}");
-                Console.WriteLine($"Nombre: {item.Value.Name}");
-                Console.WriteLine($"Apellidos: {item.Value.Lastname}");
-                Console.WriteLine($"Teléfono: {item.Value.PhoneNumber}");
-                Console.WriteLine("------------------------------");
-            }
-        }
-
         public static bool AddUser(string name, string lastname, string email, string password, int phoneNumber) {
             if (LibraryRepository.UsersAccount.ContainsKey(email)) {
                 return false; 
@@ -27,5 +15,14 @@ namespace LibraryApp.Business {
                 return true;
             }
         }
+
+        public static bool UserExists(string email) {
+            if (LibraryRepository.UsersAccount.ContainsKey(email)) {
+                return true;
+            }else {
+                return false;
+            }
+        }
+
     }
 }
