@@ -22,3 +22,15 @@ C:\Users\S2-PC00\Documents\AA1_LibraryApp_DWES\LibraryApp\Models\obj\Debug\net7.
 C:\Users\S2-PC00\Documents\AA1_LibraryApp_DWES\LibraryApp\Models\obj\Debug\net7.0\refint\LibraryApp.Models.dll
 C:\Users\S2-PC00\Documents\AA1_LibraryApp_DWES\LibraryApp\Models\obj\Debug\net7.0\LibraryApp.Models.pdb
 C:\Users\S2-PC00\Documents\AA1_LibraryApp_DWES\LibraryApp\Models\obj\Debug\net7.0\ref\LibraryApp.Models.dll
+C:\Users\paula\Documents\AA1_LibraryApp_DWES\LibraryApp\Models\bin\Debug\net7.0\LibraryApp.Models.deps.json
+C:\Users\paula\Documents\AA1_LibraryApp_DWES\LibraryApp\Models\bin\Debug\net7.0\LibraryApp.Models.dll
+C:\Users\paula\Documents\AA1_LibraryApp_DWES\LibraryApp\Models\bin\Debug\net7.0\LibraryApp.Models.pdb
+C:\Users\paula\Documents\AA1_LibraryApp_DWES\LibraryApp\Models\obj\Debug\net7.0\LibraryApp.Models.csproj.AssemblyReference.cache
+C:\Users\paula\Documents\AA1_LibraryApp_DWES\LibraryApp\Models\obj\Debug\net7.0\LibraryApp.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\paula\Documents\AA1_LibraryApp_DWES\LibraryApp\Models\obj\Debug\net7.0\LibraryApp.Models.AssemblyInfoInputs.cache
+C:\Users\paula\Documents\AA1_LibraryApp_DWES\LibraryApp\Models\obj\Debug\net7.0\LibraryApp.Models.AssemblyInfo.cs
+C:\Users\paula\Documents\AA1_LibraryApp_DWES\LibraryApp\Models\obj\Debug\net7.0\LibraryApp.Models.csproj.CoreCompileInputs.cache
+C:\Users\paula\Documents\AA1_LibraryApp_DWES\LibraryApp\Models\obj\Debug\net7.0\LibraryApp.Models.dll
+C:\Users\paula\Documents\AA1_LibraryApp_DWES\LibraryApp\Models\obj\Debug\net7.0\refint\LibraryApp.Models.dll
+C:\Users\paula\Documents\AA1_LibraryApp_DWES\LibraryApp\Models\obj\Debug\net7.0\LibraryApp.Models.pdb
+C:\Users\paula\Documents\AA1_LibraryApp_DWES\LibraryApp\Models\obj\Debug\net7.0\ref\LibraryApp.Models.dll

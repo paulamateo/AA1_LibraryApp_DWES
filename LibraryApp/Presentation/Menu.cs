@@ -3,15 +3,12 @@ using LibraryApp.Business;
 namespace LibraryApp.Presentation {
     public class Menu {
 
-        public static void Title() {
-            Console.WriteLine("BIBLIOTECA MULTIMEDIA 'El Almacén de Historias'");
-            Console.WriteLine("¡Bienvenido!");
+        public static void DisplayTitle() {
+            Style.PrintTitle("BIBLIOTECA MULTIMEDIA 'El Almacén de Historias'");
         }
-        
+
         public static void DisplayPrincipalMenu() {
-            Console.WriteLine("1 - Iniciar sesión");
-            Console.WriteLine("2 - Crear cuenta");
-            Console.WriteLine("3 - Salir");
+            Style.PrintMenu("1 - Iniciar sesión\n2 - Crear cuenta\n3 - Salir");
         }
 
         public static void Login() {
@@ -20,7 +17,7 @@ namespace LibraryApp.Presentation {
         }
 
         public static void CreateNewAccount() {
-            Console.WriteLine("CREAR CUENTA");
+            Style.PrintOptionTitle("CREAR CUENTA");
             Console.WriteLine("Nombre:");
             string? name = Console.ReadLine();
             Console.WriteLine("Apellidos:");
@@ -31,11 +28,9 @@ namespace LibraryApp.Presentation {
             int phoneNumber = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Contraseña:");
             string? password = Console.ReadLine();
-            Console.WriteLine("Confirmar contraseña:");
-            string? secondPassword = Console.ReadLine();
             bool accountCreated = LibraryService.AddUser(name, lastname, email, password, phoneNumber);
             if (accountCreated) {
-                Style.PrintGood("Cuenta creada exitosamente.\n");
+                Style.PrintSuccess("Cuenta creada exitosamente.\n");
             } else{
                 Style.PrintError("Este correo electrónico ya está asociado a una cuenta.\n");
             }

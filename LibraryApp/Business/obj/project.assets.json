@@ -45,39 +45,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\S2-PC00\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\paula\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\S2-PC00\\Documents\\AA1_LibraryApp_DWES\\LibraryApp\\Business\\LibraryApp.Business.csproj",
+      "projectUniqueName": "C:\\Users\\paula\\Documents\\AA1_LibraryApp_DWES\\LibraryApp\\Business\\LibraryApp.Business.csproj",
       "projectName": "LibraryApp.Business",
-      "projectPath": "C:\\Users\\S2-PC00\\Documents\\AA1_LibraryApp_DWES\\LibraryApp\\Business\\LibraryApp.Business.csproj",
-      "packagesPath": "C:\\Users\\S2-PC00\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\S2-PC00\\Documents\\AA1_LibraryApp_DWES\\LibraryApp\\Business\\obj\\",
+      "projectPath": "C:\\Users\\paula\\Documents\\AA1_LibraryApp_DWES\\LibraryApp\\Business\\LibraryApp.Business.csproj",
+      "packagesPath": "C:\\Users\\paula\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\paula\\Documents\\AA1_LibraryApp_DWES\\LibraryApp\\Business\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\S2-PC00\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\paula\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\S2-PC00\\Documents\\AA1_LibraryApp_DWES\\LibraryApp\\Data\\LibraryApp.Data.csproj": {
-              "projectPath": "C:\\Users\\S2-PC00\\Documents\\AA1_LibraryApp_DWES\\LibraryApp\\Data\\LibraryApp.Data.csproj"
+            "C:\\Users\\paula\\Documents\\AA1_LibraryApp_DWES\\LibraryApp\\Data\\LibraryApp.Data.csproj": {
+              "projectPath": "C:\\Users\\paula\\Documents\\AA1_LibraryApp_DWES\\LibraryApp\\Data\\LibraryApp.Data.csproj"
             }
           }
         }
@@ -107,7 +100,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.310\\RuntimeIdentifierGraph.json"
       }
     }
   }

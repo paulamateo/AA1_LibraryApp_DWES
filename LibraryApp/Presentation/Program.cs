@@ -2,7 +2,7 @@ using LibraryApp.Business;
 using LibraryApp.Presentation;
 
 bool exit = false;
-Menu.Title();
+Menu.DisplayTitle();
 
 while(!exit) {
     try {
@@ -18,7 +18,6 @@ while(!exit) {
                 break;
             case 2: 
                 Menu.CreateNewAccount();
-                //Crear cuenta
                 break;
             case 3:
                 Console.WriteLine("¡Hasta pronto!");

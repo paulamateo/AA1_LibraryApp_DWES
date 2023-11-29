@@ -15,9 +15,9 @@ namespace LibraryApp.Data {
                 var options = new JsonSerializerOptions { WriteIndented = true };
                 string jsonString = JsonSerializer.Serialize(user, options);
                 File.WriteAllText(fullPath, jsonString);    
-                Console.WriteLine($"Usuario guardado en: {fullPath}");
+                Console.WriteLine($"Ruta: {fullPath}");
             } catch (Exception e) {
-                Console.WriteLine($"Error al intentar guardar el usuario en JSON: {e.Message}");
+                Console.WriteLine($"Error: {e.Message}");
             }
         }
         

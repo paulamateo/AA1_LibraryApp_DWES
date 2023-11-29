@@ -5,19 +5,18 @@ using LibraryApp.Models;
 namespace LibraryApp.Business {
     public class LibraryService : ILibraryService {
 
-public static void ViewUserDictionary() {
-    Console.WriteLine("CONTENIDO DEL DICCIONARIO DE USUARIOS:");
+        public static void ViewUserDictionary() {
+            Console.WriteLine("CONTENIDO DEL DICCIONARIO DE USUARIOS:");
 
-    foreach (var kvp in LibraryRepository.UsersAccount) {
-        Console.WriteLine($"Email: {kvp.Key}");
-        Console.WriteLine($"Nombre: {kvp.Value.Name}");
-        Console.WriteLine($"Apellidos: {kvp.Value.Lastname}");
-        Console.WriteLine($"Teléfono: {kvp.Value.PhoneNumber}");
-        Console.WriteLine("------------------------------");
-    }
+            foreach (var item in LibraryRepository.UsersAccount) {
+                Console.WriteLine($"Email: {item.Key}");
+                Console.WriteLine($"Nombre: {item.Value.Name}");
+                Console.WriteLine($"Apellidos: {item.Value.Lastname}");
+                Console.WriteLine($"Teléfono: {item.Value.PhoneNumber}");
+                Console.WriteLine("------------------------------");
+            }
+        }
 
-    Console.WriteLine("Fin del contenido del diccionario.\n");
-}
         public static bool AddUser(string name, string lastname, string email, string password, int phoneNumber) {
             if (LibraryRepository.UsersAccount.ContainsKey(email)) {
                 return false; 
@@ -28,7 +27,5 @@ public static void ViewUserDictionary() {
                 return true;
             }
         }
-
     }
-
 }
