@@ -1,11 +1,11 @@
 namespace LibraryApp.Models;
 
 public class User {
-    public string? Name { get; set; }
-    public string? Lastname { get; set; }
-    public string? Email { get; set; }
-    public string? Password { get; set; }
-    public int? PhoneNumber { get; set; }
+    public string Name { get; set; }
+    public string Lastname { get; set; }
+    public string Email { get; set; }
+    public string Password { get; set; }
+    public int PhoneNumber { get; set; }
     public int userNumber = 1;
     public string userAccountNumber { get; }
     //historial de préstamos

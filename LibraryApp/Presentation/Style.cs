@@ -4,26 +4,26 @@ namespace LibraryApp.Presentation {
 
     public class Style {
 
-        public static void PrintInfo(string message) {
+        public void PrintInfo(string message) {
             AnsiConsole.MarkupLine("[aqua bold]" + message + "[/]");
         }
 
-        public static void PrintError(string message) {
+        public void PrintError(string message) {
             AnsiConsole.MarkupLine("[red]" + message + "[/]");
         }
 
-        public static void PrintSuccess(string message) {
+        public void PrintSuccess(string message) {
             AnsiConsole.MarkupLine("[green]" + message + "[/]");
         }
 
-        public static void PrintOptionTitle(string message) {
+        public void PrintOptionTitle(string message) {
             var optionTitle = new Panel("[green bold]" + message + "[/]")
                 .Border(BoxBorder.Heavy)
                 .BorderColor(Color.Green);
             AnsiConsole.Write(optionTitle);
         }
 
-        public static void PrintMenu(string message) {
+        public void PrintMenu(string message) {
             var menu = new Panel("[aqua bold]" + message + "[/]")
                 .Border(BoxBorder.Heavy)
                 .Header(new PanelHeader("[bold]MENÚ[/]"))
