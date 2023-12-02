@@ -10,6 +10,18 @@ namespace LibraryApp.Business {
             _repository = repository;
         }
 
+        
+        // public void DisplayBooks() {
+        //     Dictionary<string, Film> filmsDictionary = _repository.GetFilmsDictionary();
+
+        //     Console.WriteLine("Contenido del diccionario:");
+        //     foreach (var film in filmsDictionary.Values) {
+        //         Console.WriteLine($"Título: {film.Title}, Duración: {film.DurationFormatted}");
+        //     }
+        // }
+    
+
+
         //LISTAR CUENTAS CREADAS POR USUARIOS
         public void DisplayUsers() {
             Dictionary<string, User> usersDictionary = _repository.GetUsersDictionary();
@@ -19,6 +31,7 @@ namespace LibraryApp.Business {
                 Console.WriteLine($"Email: {user.Email}, Nombre: {user.Name}, Apellido: {user.Lastname}, Teléfono: {user.PhoneNumber}");
             }
         }
+
 
         //CREAR USUARIO
         public bool CreateNewUser(string name, string lastname, string email, string password, int phoneNumber) {
