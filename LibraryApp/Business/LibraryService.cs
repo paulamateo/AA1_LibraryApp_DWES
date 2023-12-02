@@ -1,28 +1,47 @@
-﻿using System.Reflection.Metadata;
 using LibraryApp.Data;
 using LibraryApp.Models;
 
 namespace LibraryApp.Business {
     public class LibraryService : ILibraryService {
 
-        public static bool AddUser(string name, string lastname, string email, string password, int phoneNumber) {
-            if (LibraryRepository.UsersAccount.ContainsKey(email)) {
-                return false; 
-            }else {
-                User newUser = new User(name, lastname, email, password, phoneNumber);
-                LibraryRepository.UsersAccount.Add(email, newUser);
-                LibraryRepository.SaveUserToJson(newUser);
-                return true;
+        private readonly ILibraryRepository _repository;
+
+        public LibraryService(ILibraryRepository repository) {
+            _repository = repository;
+        }
+
+        //LISTAR CUENTAS CREADAS POR USUARIOS
+        public void DisplayUsers() {
+            Dictionary<string, User> usersDictionary = _repository.GetUsersDictionary();
+
+            Console.WriteLine("Contenido del diccionario:");
+            foreach (var user in usersDictionary.Values) {
+                Console.WriteLine($"Email: {user.Email}, Nombre: {user.Name}, Apellido: {user.Lastname}, Teléfono: {user.PhoneNumber}");
             }
         }
 
-        public static bool UserExists(string email) {
-            if (LibraryRepository.UsersAccount.ContainsKey(email)) {
+        //CREAR USUARIO
+        public bool CreateNewUser(string name, string lastname, string email, string password, int phoneNumber) {
+            User? existingEmailAccount = _repository.GetAccountByEmail(email);
+            if (existingEmailAccount == null) {
+                User user = new User(name, lastname, email, password, phoneNumber);
+                _repository.AddAccount(user);
                 return true;
             }else {
                 return false;
             }
         }
 
+        //VER SI EL CORREO ELECTRONICO ESTÁ EN EL DICCIONARIO, Y SI ADEMAS EL CORREO ELECTRONICO COINCIDE CON LA CONTRASEÑA
+        public bool AuthenticateUser(string email, string password) {
+            User? existingEmailAccount = _repository.GetAccountByEmail(email);
+            if (existingEmailAccount != null && existingEmailAccount.Password == password) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
     }
+
 }

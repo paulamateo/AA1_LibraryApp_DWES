@@ -3,60 +3,71 @@ using LibraryApp.Business;
 namespace LibraryApp.Presentation {
     public class Menu {
 
-        public static void DisplayTitle() {
-            Style.PrintTitle("BIBLIOTECA MULTIMEDIA 'El Almacén de Historias'");
+        public static void DisplayWelcome() { 
+            Style.PrintInfo("BIBLIOTECA MULTIMEDIA 'El Almacén de Historias'\n");
+        }
+
+        public static void DisplayFarewell() { 
+            Style.PrintInfo("\n¡Hasta pronto!");
+        }
+
+        public static void DisplayOptionTitle(string optionName) {
+            Style.PrintOptionTitle($"{optionName}\nIntroduce los datos que se piden a continuación");   
         }
 
         public static void DisplayPrincipalMenu() {
             Style.PrintMenu("1 - Iniciar sesión\n2 - Crear cuenta\n3 - Salir");
         }
 
-        public static void Login() {
-            Style.PrintOptionTitle("INICIAR SESIÓN");
-            Console.WriteLine("Correo electrónico:");
-            string? email = Console.ReadLine();
-            Console.WriteLine("Contraseña:");
-            string? password = Console.ReadLine();
-            
-            bool accountHasBeenCreated = LibraryService.UserExists(email);
-            if (accountHasBeenCreated) {
-                Style.PrintSuccess($"¡Hola de nuevo!");
+        public static void DisplaySecondMenu() {
+            Style.PrintMenu("1 - Buscar\n2 - Devolver\n3 - Mostrar información de tu cuenta\n4 - Volver");
+        }
+
+        public static void OptionSecondMenu(int option) {
+            switch(option) {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    DisplayInfoUser();
+                    break;
+                case 4:
+                    DisplayPrincipalMenu();
+                    break;
+                default:
+                Style.PrintError($"La opción {option} no está en el menú");
+                    break;
+                
+            }
+        }
+
+
+        public static void DisplayInfoUser() {
+            //MÉTODO QUE ME VA A DECIR LOS LIBROS/PELIS QUE HE COGIDO, QUÉ FECHA, TIEMPO, ETC. Y SI LOS HE DEVUELTO O NO
+        }
+
+        //SIGN UP
+        public static void AccountIsCreated(bool userCreated) {
+            if (userCreated) {
+                Style.PrintSuccess("\nCuenta creada exitosamente.\n");
                 DisplaySecondMenu();
             }else {
-                Style.PrintError("Tu correo electrónico no está asociado a ninguna cuenta.\n");
+                Style.PrintError("\nEl correo electrónico ya está asociado a una cuenta existente.\n");
                 DisplayPrincipalMenu();
             }
         }
 
-        public static void SignUp() {
-            Style.PrintOptionTitle("CREAR CUENTA");
-            Console.WriteLine("Nombre:");
-            string? name = Console.ReadLine();
-            Console.WriteLine("Apellidos:");
-            string? lastname = Console.ReadLine();
-            Console.WriteLine("Correo electrónico");
-            string? email = Console.ReadLine();
-            Console.WriteLine("Teléfono:");
-            int phoneNumber = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Contraseña:");
-            string? password = Console.ReadLine();
-            Console.WriteLine("Confirmar contraseña:");
-            string? secondPassword = Console.ReadLine();
-            bool accountCreated = LibraryService.AddUser(name, lastname, email, password, phoneNumber);
-            if (accountCreated) {
-                Style.PrintSuccess("Cuenta creada exitosamente.\n");
+
+        //LOGIN
+        public static void AccountExists(bool isAuthenticated) {
+            if(isAuthenticated) {
                 DisplaySecondMenu();
-            } else{
-                Style.PrintError("Este correo electrónico ya está asociado a una cuenta.\n");
+            }else {
+                Style.PrintError("\nInicio de sesión fallido. Comprueba que la contraseña o el correo sean correctos.\n");
+                DisplayPrincipalMenu();
             }
         }
 
-        public static void DisplaySecondMenu() {
-            Console.WriteLine("1 - Buscar libro");
-            Console.WriteLine("2 - Devolver libro");
-            Console.WriteLine("3 - Buscar película");
-            Console.WriteLine("4 - Devolver película");
-            Console.WriteLine("5 - Volver");
-        }
     }
 }

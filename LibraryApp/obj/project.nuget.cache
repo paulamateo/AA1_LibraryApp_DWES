@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "W7lOAhtXUiJDANAP4j2Fe2yReN0rwRoLn9f04b/nMtOvU7zEBLPe8V24Wcg+vpiTo2FxZ4o5LZvqJo/VxppCqw==",
+  "dgSpecHash": "wAgE+A+AtcY4kdUZnqSEK/OWiT10L3F1mYROlNGJG73eZJsFciWWEKxawiTtjWumZfwgeQlPZSZGA+JnTjYfww==",
   "success": true,
-  "projectFilePath": "C:\\Users\\paula\\Documents\\LibraryApp\\LibraryApp.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\paula\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.24\\microsoft.netcore.app.ref.6.0.24.nupkg.sha512",
-    "C:\\Users\\paula\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.24\\microsoft.windowsdesktop.app.ref.6.0.24.nupkg.sha512",
-    "C:\\Users\\paula\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.24\\microsoft.aspnetcore.app.ref.6.0.24.nupkg.sha512",
-    "C:\\Users\\paula\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.24\\microsoft.netcore.app.host.win-x64.6.0.24.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\paula\\LibraryApp\\LibraryApp.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
