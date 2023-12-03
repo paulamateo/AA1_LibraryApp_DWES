@@ -5,12 +5,11 @@ using LibraryApp.Business;
 var _libraryRepository = new LibraryRepository();
 var _libraryService = new LibraryService(_libraryRepository);
 
-Menu _menu = new Menu();
-Style _style = new Style();
+Menu _menu = new Menu(_libraryService, new Style());
 
 bool exit = false;
 _menu.DisplayWelcome();
-_menu.DisplayPrincipalMenu();
+_menu.DisplayMainMenu();
 
 while (!exit) {
     Console.WriteLine("\nELIGE UNA OPCIÓN:");
@@ -19,42 +18,41 @@ while (!exit) {
         Console.WriteLine("");
         switch(option) {
             case 1:
-                //CREAR CUENTA
-                var (name, lastname, email, password, phoneNumber) = _menu.DisplayPaneltoCreateAccount();
-                bool userCreated = _libraryService.CreateNewUser(name, lastname, email, password, phoneNumber);
-                _menu.AccountIsCreated(userCreated);
+                var (name, lastname, email, password, phoneNumber) = _menu.DisplayPanelforCreateAccount();
+                bool userCreated = _libraryService.CreateUser(name, lastname, email, password, phoneNumber);
+
+                if (userCreated) {
+                    Console.WriteLine("\nCuenta creada exitosamente.\n");
+                    _menu.DisplaySecondMenu();
+                    var option_secMenu = Convert.ToInt32(Console.ReadLine());
+                    _menu.DisplayPanelforActions(option_secMenu);
+                }else {
+                    Console.WriteLine("\nEl correo electrónico ya está asociado a una cuenta existente.\n");
+                    _menu.DisplayMainMenu();
+                }
                 break;
             case 2:
-                //INICIAR SESIÓN
+                var (emailLogin, passwordLogin) = _menu.DisplayPanelforLogin();
+                bool isAuthenticated = _libraryService.AuthenticateUser(emailLogin, passwordLogin);
 
-
-                // _libraryService.DisplayBooks();
-                //LOGIN
-                // Menu.DisplayOptionTitle("INICIAR SESIÓN");
-                // Console.WriteLine("Correo electrónico");
-                // string? emailLogin = Console.ReadLine();
-                // Console.WriteLine("Contraseña");
-                // string? passwordLogin = Console.ReadLine();
-                
-                // bool isAuthenticated = _libraryService.AuthenticateUser(emailLogin, passwordLogin);
-                // Menu.AccountExists(isAuthenticated);
-
-
+                if (isAuthenticated) {
+                    _menu.DisplaySecondMenu();
+                    var option_secMenu = Convert.ToInt32(Console.ReadLine());
+                    _menu.DisplayPanelforActions(option_secMenu);
+                }else {
+                    Console.WriteLine("\nInicio de sesión fallido. Comprueba que la contraseña o el correo sean correctos.\n");
+                    _menu.DisplayMainMenu();
+                }
                 break;
             case 3:
-                //SALIR
                 exit = true;
                 _menu.DisplayFarewell();
                 break;
-            case 4:
-            //LISTAR CUENTAS QUE HAY EN EL DICCIONARIO
-                _libraryService.DisplayUsers();
-                break;
             default:
-                _style.PrintError($"\nLa opción {option} no está en el menú.\n");
+                Console.WriteLine($"\nLa opción {option} no está en el menú.\n");
                 break;
         }
     }catch (FormatException) {
-        _style.PrintError($"\nError de formato. Debes introducir un carácter válido.\n");
+        Console.WriteLine($"\nError de formato. Debes introducir un carácter válido.\n");
     }
 }
