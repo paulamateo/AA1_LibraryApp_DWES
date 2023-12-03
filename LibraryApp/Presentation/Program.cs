@@ -10,7 +10,7 @@ Style _style = new Style();
 
 bool exit = false;
 _menu.DisplayWelcome();
-_menu.DisplayPrincipalMenu();
+_menu.DisplayMainMenu();
 
 while (!exit) {
     Console.WriteLine("\nELIGE UNA OPCIÓN:");
@@ -20,35 +20,95 @@ while (!exit) {
         switch(option) {
             case 1:
                 //CREAR CUENTA
-                var (name, lastname, email, password, phoneNumber) = _menu.DisplayPaneltoCreateAccount();
+                var (name, lastname, email, password, phoneNumber) = _menu.DisplayPanelforCreateAccount();
                 bool userCreated = _libraryService.CreateNewUser(name, lastname, email, password, phoneNumber);
-                _menu.AccountIsCreated(userCreated);
+
+                if (userCreated) {
+                    _style.PrintSuccess("\nCuenta creada exitosamente.\n");
+                    _menu.DisplaySecondMenu();
+                    var option_secMenu = Convert.ToInt32(Console.ReadLine());
+                    switch(option_secMenu) {
+                        case 1:
+                            //BUSCAR
+                            _style.PrintOptionTitle("BÚSQUEDA DE LIBROS Y PELÍCULAS\nIntroduce el título del libro o película que deseas buscar\n"); 
+                            Console.WriteLine("Título:");  
+                            //mostrar pelicula/libro (si existe) y preguntar si se desea ver/ leer
+                            break;
+                        case 2:
+                            //MOSTRAR LIBROS
+                            _style.PrintOptionTitle("LIBROS DISPONIBLES\n"); 
+
+                            break;
+                        case 3:
+                            //MOSTRAR PELÍCULAS
+                            _style.PrintOptionTitle("PELÍCULAS DISPONIBLES\n"); 
+                            //mostrar peliculas, y preguntar si se decide 
+                            break;
+                        case 4:
+                            //HISTORIAL DEL USUARIO
+                            _style.PrintOptionTitle("HISTORIAL DE VISUALIZACIÓN Y LECTURA\n"); 
+                            //muestra el historial de todo lo que ha visto y leído (si hay, claro)
+                            break;
+                        case 5:
+                            //VOLVER
+                            _menu.DisplayMainMenu();
+                            break;
+                        default:
+                            _style.PrintError($"\nLa opción {option} no está en el menú.\n");
+                            break;
+                    }
+                }else {
+                    _style.PrintError("\nEl correo electrónico ya está asociado a una cuenta existente.\n");
+                    _menu.DisplayMainMenu();
+                }
                 break;
             case 2:
                 //INICIAR SESIÓN
+                var (emailLogin, passwordLogin) = _menu.DisplayPanelforLogin();
+                bool isAuthenticated = _libraryService.AuthenticateUser(emailLogin, passwordLogin);
 
+                if (isAuthenticated) {
+                    _menu.DisplaySecondMenu();
+                    var option_secMenu = Convert.ToInt32(Console.ReadLine());
+                    switch(option_secMenu) {
+                        case 1:
+                            //BUSCAR
+                            _style.PrintOptionTitle("BÚSQUEDA DE LIBROS Y PELÍCULAS\nIntroduce el título del libro o película que deseas buscar\n"); 
+                            Console.WriteLine("Título:");  
+                            //mostrar pelicula/libro (si existe) y preguntar si se desea ver/ leer
+                            break;
+                        case 2:
+                            //MOSTRAR LIBROS
+                            _style.PrintOptionTitle("LIBROS DISPONIBLES\n"); 
 
-                // _libraryService.DisplayBooks();
-                //LOGIN
-                // Menu.DisplayOptionTitle("INICIAR SESIÓN");
-                // Console.WriteLine("Correo electrónico");
-                // string? emailLogin = Console.ReadLine();
-                // Console.WriteLine("Contraseña");
-                // string? passwordLogin = Console.ReadLine();
-                
-                // bool isAuthenticated = _libraryService.AuthenticateUser(emailLogin, passwordLogin);
-                // Menu.AccountExists(isAuthenticated);
-
-
+                            break;
+                        case 3:
+                            //MOSTRAR PELÍCULAS
+                            _style.PrintOptionTitle("PELÍCULAS DISPONIBLES\n"); 
+                            //mostrar peliculas, y preguntar si se decide 
+                            break;
+                        case 4:
+                            //HISTORIAL DEL USUARIO
+                            _style.PrintOptionTitle("HISTORIAL DE VISUALIZACIÓN Y LECTURA\n"); 
+                            //muestra el historial de todo lo que ha visto y leído (si hay, claro)
+                            break;
+                        case 5:
+                            //VOLVER
+                            _menu.DisplayMainMenu();
+                            break;
+                        default:
+                            _style.PrintError($"\nLa opción {option} no está en el menú.\n");
+                            break;
+                    }
+                }else {
+                    _style.PrintError("\nInicio de sesión fallido. Comprueba que la contraseña o el correo sean correctos.\n");
+                    _menu.DisplayMainMenu();
+                }
                 break;
             case 3:
                 //SALIR
                 exit = true;
                 _menu.DisplayFarewell();
-                break;
-            case 4:
-            //LISTAR CUENTAS QUE HAY EN EL DICCIONARIO
-                _libraryService.DisplayUsers();
                 break;
             default:
                 _style.PrintError($"\nLa opción {option} no está en el menú.\n");

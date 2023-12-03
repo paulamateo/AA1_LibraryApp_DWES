@@ -1,5 +1,5 @@
 using LibraryApp.Data;
-using LibraryApp.Models;
+// using LibraryApp.Models;
 
 namespace LibraryApp.Business {
     public class LibraryService : ILibraryService {
@@ -10,27 +10,22 @@ namespace LibraryApp.Business {
             _repository = repository;
         }
 
-        
-        // public void DisplayBooks() {
-        //     Dictionary<string, Film> filmsDictionary = _repository.GetFilmsDictionary();
-
-        //     Console.WriteLine("Contenido del diccionario:");
-        //     foreach (var film in filmsDictionary.Values) {
-        //         Console.WriteLine($"Título: {film.Title}, Duración: {film.DurationFormatted}");
-        //     }
-        // }
-    
+        public Dictionary<string, Book> GetBooks() {
+            return _repository.GetBooksDictionary();
+        }
 
 
-        //LISTAR CUENTAS CREADAS POR USUARIOS
-        public void DisplayUsers() {
-            Dictionary<string, User> usersDictionary = _repository.GetUsersDictionary();
+  
 
-            Console.WriteLine("Contenido del diccionario:");
-            foreach (var user in usersDictionary.Values) {
-                Console.WriteLine($"Email: {user.Email}, Nombre: {user.Name}, Apellido: {user.Lastname}, Teléfono: {user.PhoneNumber}");
+
+        public void DisplayFilms() {
+            Dictionary<string, Film> _filmsDictionary = _repository.GetFilmsDictionary();
+
+            foreach (var film in _filmsDictionary.Values) {
+                Console.WriteLine($"Título: {film.Title}");
             }
         }
+    
 
 
         //CREAR USUARIO

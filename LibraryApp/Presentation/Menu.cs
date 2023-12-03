@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using LibraryApp.Business;
 
 namespace LibraryApp.Presentation {
@@ -5,30 +6,18 @@ namespace LibraryApp.Presentation {
 
         Style _style = new Style();
         public void DisplayWelcome() { 
-            _style.PrintInfo("BIBLIOTECA MULTIMEDIA 'El Almacén de Historias'\n");
+            _style.PrintInfo("BIBLIOTECA MULTIMEDIA 'NEXVERSE");
         }
 
-        public void DisplayPrincipalMenu() {
+        public void DisplayMainMenu() {
             _style.PrintMenu("1 - Crear cuenta\n2 - Iniciar sesión\n3 - Salir");
         }
 
-        // public void DisplayPaneltoCreateAccount() {
-        //     DisplayOptionTitle("CREAR CUENTA");
-        //     Console.WriteLine("\nNombre:");
-        //     string? name = Console.ReadLine();
-        //     Console.WriteLine("Apellidos:");
-        //     string? lastname = Console.ReadLine();
-        //     Console.WriteLine("Correo electrónico");
-        //     string? email = Console.ReadLine();
-        //     Console.WriteLine("Teléfono:");
-        //     int phoneNumber = Convert.ToInt32(Console.ReadLine());
-        //     Console.WriteLine("Contraseña:");
-        //     string? password = Console.ReadLine();
-        //     Console.WriteLine("Confirmar contraseña:");
-        //     string? secondPassword = Console.ReadLine();  
-        // }
+        public void DisplaySecondMenu() {
+            _style.PrintMenu("1 - Buscar\n2 - Mostrar libros disponibles\n3 - Mostrar películas disponibles\n4 - Historial del usuario\n5 - Volver");
+        }
 
-        public (string? Name, string? Lastname, string? Email, string? Password, int PhoneNumber) DisplayPaneltoCreateAccount() {
+        public (string? name, string? lastname, string? email, string? password, int phoneNumber) DisplayPanelforCreateAccount() {
             DisplayOptionTitle("CREAR CUENTA");
             Console.WriteLine("\nNombre:");
             string? name = Console.ReadLine();
@@ -40,20 +29,50 @@ namespace LibraryApp.Presentation {
             int phoneNumber = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Contraseña:");
             string? password = Console.ReadLine();
-            Console.WriteLine("Confirmar contraseña:");
-            string? secondPassword = Console.ReadLine();
             return (name, lastname, email, password, phoneNumber);
         }
 
-        public void AccountIsCreated(bool userCreated) {
-            if (userCreated) {
-                _style.PrintSuccess("\nCuenta creada exitosamente.\n");
-                DisplaySecondMenu();
-            }else {
-                _style.PrintError("\nEl correo electrónico ya está asociado a una cuenta existente.\n");
-                DisplayPrincipalMenu();
-            }
+        public (string? email, string? password) DisplayPanelforLogin() {
+            DisplayOptionTitle("INICIAR SESIÓN");
+            Console.WriteLine("\nCorreo electrónico:");
+            string? email = Console.ReadLine();
+            Console.WriteLine("Contraseña:");
+            string? password = Console.ReadLine();
+            return (email, password);
         }
+
+        public void DisplayPanelforActions(int? optionAction) {
+            switch(optionAction) {
+                case 1:
+                    //BUSCAR
+                    _style.PrintOptionTitle("BÚSQUEDA DE LIBROS Y PELÍCULAS\nIntroduce el título del libro o película que deseas buscar\n"); 
+                    Console.WriteLine("Título:");  
+                    //mostrar pelicula/libro (si existe) y preguntar si se desea ver/ leer
+                    break;
+                case 2:
+                    //MOSTRAR LIBROS
+                    _style.PrintOptionTitle("LIBROS DISPONIBLES\n"); 
+                     break;
+                case 3:
+                    //MOSTRAR PELÍCULAS
+                    _style.PrintOptionTitle("PELÍCULAS DISPONIBLES\n"); 
+                    //mostrar peliculas, y preguntar si se decide 
+                    break;
+                case 4:
+                    //HISTORIAL DEL USUARIO
+                    _style.PrintOptionTitle("HISTORIAL DE VISUALIZACIÓN Y LECTURA\n"); 
+                    //muestra el historial de todo lo que ha visto y leído (si hay, claro)
+                    break;
+                case 5:
+                    //VOLVER
+                    DisplayMainMenu();
+                    break;
+                default:
+                    _style.PrintError($"\nLa opción {optionAction} no está en el menú.\n");
+                    break;
+                }
+        }
+
 
 
 
@@ -79,9 +98,6 @@ namespace LibraryApp.Presentation {
 
 
 
-        public void DisplaySecondMenu() {
-            _style.PrintMenu("1 - Buscar\n2 - Devolver\n3 - Mostrar información de tu cuenta\n4 - Volver");
-        }
 
         public void OptionSecondMenu(int option) {
             switch(option) {
@@ -113,14 +129,7 @@ namespace LibraryApp.Presentation {
 
 
         // //LOGIN
-        // public static void AccountExists(bool isAuthenticated) {
-        //     if(isAuthenticated) {
-        //         DisplaySecondMenu();
-        //     }else {
-        //         Style.PrintError("\nInicio de sesión fallido. Comprueba que la contraseña o el correo sean correctos.\n");
-        //         DisplayPrincipalMenu();
-        //     }
-        // }
+
 
     }
 }

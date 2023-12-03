@@ -6,9 +6,9 @@ namespace LibraryApp.Data {
 
         Dictionary<string, User> GetUsersDictionary();
 
-        // Dictionary<string, Book> GetBooksDictionary();
+        Dictionary<string, Book> GetBooksDictionary();
 
-        // Dictionary<string, Film> GetFilmsDictionary();
+        Dictionary<string, Film> GetFilmsDictionary();
 
         User? GetAccountByEmail(string email);
 
