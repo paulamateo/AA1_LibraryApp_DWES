@@ -5,7 +5,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Business\LibraryApp.Data.csproj" />
+    <ProjectReference Include="..\Data\LibraryApp.Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>

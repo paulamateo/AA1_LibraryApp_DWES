@@ -17,6 +17,10 @@ namespace LibraryApp.Presentation {
             AnsiConsole.MarkupLine("[green]" + message + "[/]");
         }
 
+        public void PrintWarning(string message) {
+            AnsiConsole.MarkupLine("[yellow]" + message + "[/]");
+        }
+
         public void PrintOptionTitle(string message) {
             var optionTitle = new Panel("[green bold]" + message + "[/]")
                 .Border(BoxBorder.Heavy)

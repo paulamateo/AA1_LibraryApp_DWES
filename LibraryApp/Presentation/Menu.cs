@@ -12,7 +12,7 @@ namespace LibraryApp.Presentation {
         }
 
         public void DisplayWelcome() { 
-            _style.PrintInfo("BIBLIOTECA MULTIMEDIA 'NEXVERSE'\n");
+            _style.PrintInfo(":books: BIBLIOTECA MULTIMEDIA 'NEXVERSE'\n");
         }
 
         public void DisplayMainMenu() {
@@ -21,6 +21,7 @@ namespace LibraryApp.Presentation {
 
         public void DisplaySecondMenu() {
             _style.PrintMenu("1 - Buscar\n2 - Mostrar libros disponibles\n3 - Mostrar películas disponibles\n4 - Historial del usuario\n5 - Volver");
+            DisplayPanelforActions();
         }
 
         public (string? name, string? lastname, string? email, string? password, int phoneNumber) DisplayPanelforCreateAccount() {
@@ -47,13 +48,11 @@ namespace LibraryApp.Presentation {
             return (email, password);
         }
 
-        public void DisplayPanelforActions(int? optionAction) {
+        public void DisplayPanelforActions() {
+            var optionAction = Convert.ToInt32(Console.ReadLine());
             switch(optionAction) {
                 case 1:
-                    _style.PrintOptionTitle("BÚSQUEDA DE LIBROS Y PELÍCULAS\nIntroduce el título del libro o película que deseas buscar\n"); 
-                    Console.WriteLine("Título:");  
-                    string? title = Console.ReadLine();
-                    //mostrar pelicula/libro (si existe) y preguntar si se desea ver/ leer
+                    DisplaySearch();
                     break;
                 case 2:
                     DisplayTableBooks();
@@ -72,7 +71,6 @@ namespace LibraryApp.Presentation {
                     break;
                 }
         }
-
 
         public void DisplayTableBooks() {
             _style.PrintOptionTitle("LIBROS DISPONIBLES"); 
@@ -110,8 +108,35 @@ namespace LibraryApp.Presentation {
             Console.WriteLine("");
         }
 
+        public void DisplaySearch() {
+            _style.PrintOptionTitle(":detective: BÚSQUEDA DE LIBROS Y PELÍCULAS\nIntroduce el título del libro o película que deseas buscar"); 
+            _style.PrintWarning("\n:a_button_blood_type: ¡Recuerda! Debes respetar tanto los espacios como las mayúsculas y tildes de los títulos.\n");
+            Console.WriteLine("Título del libro o película:");  
+            string? title = Console.ReadLine();
+
+            bool titleSearch = _libraryService.SearchFunctionality(title);
+            if (titleSearch) {
+                AnsiConsole.MarkupLine($"\n¡Sí :beaming_face_with_smiling_eyes:, tenemos el título que buscas!\n¿Te gustaría ver o leer '{title}'? Escribe 1 (Sí) / 2 (No)");
+                var answer = Convert.ToInt32(Console.ReadLine());
+                switch(answer) {
+                    case 1:
+                        //AGREGAR AL HISTORIAL
+                        DisplaySecondMenu();
+                        break;
+                    case 2:
+                        DisplaySecondMenu();
+                        break;
+                    default:
+                        _style.PrintError("¡Esa opción no existe!");
+                        break;
+                }
+            }else {
+                AnsiConsole.MarkupLine("\nLo sentimos :confounded_face:, no disponemos de ese título.\n");
+            }
+        }
+
         public void DisplayHistorialAccount() {
-            _style.PrintOptionTitle("HISTORIAL DE VISUALIZACIÓN Y LECTURA\n"); 
+            _style.PrintOptionTitle(":spiral_notepad: HISTORIAL DE VISUALIZACIÓN Y LECTURA\n"); 
         }
 
         public void DisplayOptionTitle(string optionName) {

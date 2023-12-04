@@ -9,9 +9,9 @@ Menu _menu = new Menu(_libraryService, new Style());
 
 bool exit = false;
 _menu.DisplayWelcome();
-_menu.DisplayMainMenu();
 
 while (!exit) {
+    _menu.DisplayMainMenu();
     Console.WriteLine("\nELIGE UNA OPCIÓN:");
     try {
         var option = Convert.ToInt32(Console.ReadLine());
@@ -24,8 +24,6 @@ while (!exit) {
                 if (userCreated) {
                     Console.WriteLine("\nCuenta creada exitosamente.\n");
                     _menu.DisplaySecondMenu();
-                    var option_secMenu = Convert.ToInt32(Console.ReadLine());
-                    _menu.DisplayPanelforActions(option_secMenu);
                 }else {
                     Console.WriteLine("\nEl correo electrónico ya está asociado a una cuenta existente.\n");
                     _menu.DisplayMainMenu();
@@ -37,11 +35,8 @@ while (!exit) {
 
                 if (isAuthenticated) {
                     _menu.DisplaySecondMenu();
-                    var option_secMenu = Convert.ToInt32(Console.ReadLine());
-                    _menu.DisplayPanelforActions(option_secMenu);
                 }else {
                     Console.WriteLine("\nInicio de sesión fallido. Comprueba que la contraseña o el correo sean correctos.\n");
-                    _menu.DisplayMainMenu();
                 }
                 break;
             case 3:
