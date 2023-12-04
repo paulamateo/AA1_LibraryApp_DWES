@@ -4,7 +4,6 @@ using Spectre.Console;
 namespace LibraryApp.Presentation {
 
     public class Style {
-
         public void PrintInfo(string message) {
             AnsiConsole.MarkupLine("[aqua bold]" + message + "[/]");
         }
@@ -15,6 +14,10 @@ namespace LibraryApp.Presentation {
 
         public void PrintSuccess(string message) {
             AnsiConsole.MarkupLine("[green]" + message + "[/]");
+        }
+
+        public void PrintBold(string message) {
+            AnsiConsole.MarkupLine("[bold]" + message + "[/]");
         }
 
         public void PrintWarning(string message) {
