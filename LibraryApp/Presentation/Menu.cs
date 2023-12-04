@@ -110,7 +110,7 @@ namespace LibraryApp.Presentation {
 
         public void DisplaySearch() {
             _style.PrintOptionTitle(":detective: BÚSQUEDA DE LIBROS Y PELÍCULAS\nIntroduce el título del libro o película que deseas buscar"); 
-            _style.PrintWarning("\n:a_button_blood_type: ¡Recuerda! Debes respetar tanto los espacios como las mayúsculas y tildes de los títulos.\n");
+            _style.PrintWarning("\n:a_button_blood_type: ¡Recuerda! Debes respetar tanto los espacios como las mayúsculas, pero no las tildes.\n");
             Console.WriteLine("Título del libro o película:");  
             string? title = Console.ReadLine();
 
@@ -126,9 +126,11 @@ namespace LibraryApp.Presentation {
                         break;
                     case 2:
                         DisplaySecondMenu();
+                        Console.WriteLine("");
                         break;
                     default:
-                        _style.PrintError("¡Esa opción no existe!");
+                        _style.PrintError("¡Esa opción no existe!\n");
+                        DisplaySecondMenu();
                         break;
                 }
             }else {
@@ -151,8 +153,9 @@ namespace LibraryApp.Presentation {
             if (history.Count > 0) {
                 Console.WriteLine("");
                 AnsiConsole.Write(tableHistory);
+                Console.WriteLine("");
             }else {
-                Console.WriteLine("\nNo has leído ni visto ningún título todavía.");
+                Console.WriteLine("\nNo has leído ni visto ningún título todavía.\n");
             }
         }
 
