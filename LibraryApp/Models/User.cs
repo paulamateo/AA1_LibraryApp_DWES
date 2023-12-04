@@ -8,8 +8,10 @@ public class User {
     public int PhoneNumber { get; set; }
     public int userNumber = 1;
     public string userAccountNumber { get; }
-    //historial de préstamos
 
+    public List<string[]> History { get; set; } = new List<string[]>();
+    
+    
     public User(string name, string lastname, string email, string password, int phoneNumber) {
         Name = name;
         Lastname = lastname;
@@ -18,7 +20,6 @@ public class User {
         PhoneNumber = phoneNumber;
         userAccountNumber = userNumber.ToString();
         userNumber++;
-        //historial de préstamos
     }
 
 }

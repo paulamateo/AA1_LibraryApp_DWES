@@ -120,7 +120,8 @@ namespace LibraryApp.Presentation {
                 var answer = Convert.ToInt32(Console.ReadLine());
                 switch(answer) {
                     case 1:
-                        //AGREGAR AL HISTORIAL
+                        _libraryService.AddItemToHistory(title);
+                        Console.WriteLine($"\n{title} añadido a tu historial. En breve recibirás un correo electrónico con el contenido solicitado.\n");
                         DisplaySecondMenu();
                         break;
                     case 2:
@@ -136,7 +137,23 @@ namespace LibraryApp.Presentation {
         }
 
         public void DisplayHistorialAccount() {
-            _style.PrintOptionTitle(":spiral_notepad: HISTORIAL DE VISUALIZACIÓN Y LECTURA\n"); 
+            _style.PrintOptionTitle("HISTORIAL DE VISUALIZACIÓN Y LECTURA"); 
+            var history = _libraryService.GetHistoryRows();
+
+            var tableHistory = new Table()
+                .AddColumn("Fecha de escogida")    
+                .AddColumn("Título")
+            ;
+            foreach (var row in history) {
+                tableHistory.AddRow(row);
+            }
+
+            if (history.Count > 0) {
+                Console.WriteLine("");
+                AnsiConsole.Write(tableHistory);
+            }else {
+                Console.WriteLine("\nNo has leído ni visto ningún título todavía.");
+            }
         }
 
         public void DisplayOptionTitle(string optionName) {
