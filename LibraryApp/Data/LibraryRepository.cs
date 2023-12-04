@@ -1,5 +1,4 @@
-﻿using System.Text;
-using System.Text.Json;
+﻿using System.Text.Json;
 using LibraryApp.Models;
 
 namespace LibraryApp.Data {
@@ -145,7 +144,6 @@ namespace LibraryApp.Data {
                 var options = new JsonSerializerOptions { WriteIndented = true };
                 string jsonString = JsonSerializer.Serialize(user, options);
                 File.WriteAllText(fullPath, jsonString);
-                Console.WriteLine($"Usuario {user.Email} serializado y guardado en {fullPath}");
             }catch (Exception e) {
                 Console.WriteLine($"Error: {e.Message}");
             }

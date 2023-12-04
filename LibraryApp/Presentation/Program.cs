@@ -11,9 +11,9 @@ bool exit = false;
 _menu.DisplayWelcome();
 
 while (!exit) {
-    _menu.DisplayMainMenu();
-    Console.WriteLine("\nELIGE UNA OPCIÓN:");
     try {
+        _menu.DisplayMainMenu();
+        _menu.PrintOption();
         var option = Convert.ToInt32(Console.ReadLine());
         Console.WriteLine("");
         switch(option) {
@@ -22,12 +22,12 @@ while (!exit) {
                 bool userCreated = _libraryService.CreateUser(name, lastname, email, password, phoneNumber);
                 
                 if (userCreated) {
-                    Console.WriteLine("\nCuenta creada exitosamente.\n");
+                    _menu.AccountCreated();
                     _libraryService.SetCurrentUser(email);
                     _menu.DisplaySecondMenu();
+                    _menu.DisplayPanelforActions();
                 }else {
                     Console.WriteLine("\nEl correo electrónico ya está asociado a una cuenta existente.\n");
-                    _menu.DisplayMainMenu();
                 }
                 break;
             case 2:
@@ -37,6 +37,7 @@ while (!exit) {
                 if (isAuthenticated) {
                     _libraryService.SetCurrentUser(emailLogin);
                     _menu.DisplaySecondMenu();
+                    _menu.DisplayPanelforActions();
                 }else {
                     Console.WriteLine("\nInicio de sesión fallido. Comprueba que la contraseña o el correo sean correctos.\n");
                 }

@@ -1,7 +1,6 @@
 namespace LibraryApp.Models;
 
 public class Film {
-
     public string Title { get; }
     public string Director { get; }
     public int YearPublished { get; }
