@@ -44,6 +44,15 @@ namespace LibraryApp.Business {
             return _repository.VerifyLogin(email, password);
         }
 
+        public bool SearchFunctionality(string title) {
+            bool isTitleInLibrary = _repository.GetAllTitles().Contains(title);
+            if (isTitleInLibrary) {
+                return true;
+            }else {
+                return false;
+            }
+        }
+
     }
 
 }

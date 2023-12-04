@@ -99,6 +99,16 @@ namespace LibraryApp.Data {
             }
         }
 
-    }
+        public List<string> GetAllTitles() {
+            List<string> titles = new List<string>();
+            foreach (var book in _books) {
+                titles.Add(book.Value.Title);
+            }
+            foreach (var film in _films) {
+                titles.Add(film.Value.Title);
+            }
+            return titles;
+        }
 
+    }
 }

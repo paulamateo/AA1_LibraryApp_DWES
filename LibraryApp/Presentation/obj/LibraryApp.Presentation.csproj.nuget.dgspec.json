@@ -195,6 +195,9 @@
             "projectReferences": {
               "C:\\Users\\paula\\OneDrive\\Documentos\\AA1_LibraryApp_DWES\\LibraryApp\\Business\\LibraryApp.Business.csproj": {
                 "projectPath": "C:\\Users\\paula\\OneDrive\\Documentos\\AA1_LibraryApp_DWES\\LibraryApp\\Business\\LibraryApp.Business.csproj"
+              },
+              "C:\\Users\\paula\\OneDrive\\Documentos\\AA1_LibraryApp_DWES\\LibraryApp\\Data\\LibraryApp.Data.csproj": {
+                "projectPath": "C:\\Users\\paula\\OneDrive\\Documentos\\AA1_LibraryApp_DWES\\LibraryApp\\Data\\LibraryApp.Data.csproj"
               }
             }
           }
