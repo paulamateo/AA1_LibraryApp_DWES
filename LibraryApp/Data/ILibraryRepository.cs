@@ -8,6 +8,8 @@ namespace LibraryApp.Data {
         bool EmailExists(string email);
         bool VerifyLogin(string email, string password);
         void SaveUserToJson(User user);
+        void SaveBooksToJson(List<Book> _booksData);
+        void SaveFilmsToJson(List<Film> _filmsData);
         List<string> GetAllTitles();
         void AddItemToHistory(string title);
         List<string[]> GetHistory();
