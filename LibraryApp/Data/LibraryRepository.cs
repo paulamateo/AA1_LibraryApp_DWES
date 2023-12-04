@@ -9,11 +9,14 @@ namespace LibraryApp.Data {
         private Dictionary<string, Film> _films = new Dictionary<string, Film>();
         private string _folderPath = @"..\Data\DATA_USERS";
 
+
+
         public LibraryRepository() {
             AddBooks();
             AddFilms();
         }
 
+    
         private void AddBooks() {
             var booksToAdd = new List<Book> {
                 new Book("Los Juegos del Hambre", "Suzanne Collins", 2014, 400, "Molino", "Ciencia Ficción"),
