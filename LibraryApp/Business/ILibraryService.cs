@@ -7,6 +7,9 @@ namespace LibraryApp.Business {
         bool CreateUser(string name, string lastname, string email, string password, int phoneNumber);
         bool AuthenticateUser(string email, string password);
         bool SearchFunctionality(string title);
+        void AddItemToHistory(string title);
+        List<string[]> GetHistoryRows();
+        void SetCurrentUser(string email);
 
     }
 }

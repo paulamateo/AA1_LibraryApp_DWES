@@ -9,7 +9,9 @@ namespace LibraryApp.Data {
         bool VerifyLogin(string email, string password);
         void SaveUserToJson(User user);
         List<string> GetAllTitles();
-
+        void AddItemToHistory(string title);
+        List<string[]> GetHistory();
+        void SetCurrentUser(string email);
     }
 
 }

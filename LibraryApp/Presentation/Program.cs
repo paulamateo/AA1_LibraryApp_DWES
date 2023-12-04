@@ -20,9 +20,10 @@ while (!exit) {
             case 1:
                 var (name, lastname, email, password, phoneNumber) = _menu.DisplayPanelforCreateAccount();
                 bool userCreated = _libraryService.CreateUser(name, lastname, email, password, phoneNumber);
-
+                
                 if (userCreated) {
                     Console.WriteLine("\nCuenta creada exitosamente.\n");
+                    _libraryService.SetCurrentUser(email);
                     _menu.DisplaySecondMenu();
                 }else {
                     Console.WriteLine("\nEl correo electrónico ya está asociado a una cuenta existente.\n");
@@ -34,6 +35,7 @@ while (!exit) {
                 bool isAuthenticated = _libraryService.AuthenticateUser(emailLogin, passwordLogin);
 
                 if (isAuthenticated) {
+                    _libraryService.SetCurrentUser(emailLogin);
                     _menu.DisplaySecondMenu();
                 }else {
                     Console.WriteLine("\nInicio de sesión fallido. Comprueba que la contraseña o el correo sean correctos.\n");

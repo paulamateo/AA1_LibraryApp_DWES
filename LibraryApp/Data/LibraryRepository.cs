@@ -8,15 +8,34 @@ namespace LibraryApp.Data {
         private Dictionary<string, Book> _books = new Dictionary<string, Book>();
         private Dictionary<string, Film> _films = new Dictionary<string, Film>();
         private string _folderPath = @"..\Data\DATA_USERS";
-
-
+        private User? _currentUser;
 
         public LibraryRepository() {
             AddBooks();
             AddFilms();
         }
 
-    
+
+        /*HISTORIAL USUARIO*/
+        public void SetCurrentUser(string email) {
+            if (_users.TryGetValue(email, out var user)) {
+                _currentUser = user;
+            }
+        }
+
+        public void AddItemToHistory(string title) {
+            if (_currentUser != null) {
+                string[] item = new string[] { DateTime.Now.ToString(), title };
+                _currentUser.History.Add(item);
+            }
+        }
+
+        public List<string[]> GetHistory() {
+            return _currentUser?.History ?? new List<string[]>();
+        }
+
+
+        /*GESTION LIBROS Y PELICULAS*/
         private void AddBooks() {
             var booksToAdd = new List<Book> {
                 new Book("Los Juegos del Hambre", "Suzanne Collins", 2014, 400, "Molino", "Ciencia Ficción"),
@@ -65,11 +84,23 @@ namespace LibraryApp.Data {
         public Dictionary<string, Book> GetBooksDictionary() {
             return _books;
         }
-
         public Dictionary<string, Film> GetFilmsDictionary() {
             return _films;
         }
 
+        public List<string> GetAllTitles() {
+            List<string> titles = new List<string>();
+            foreach (var book in _books) {
+                titles.Add(book.Value.Title);
+            }
+            foreach (var film in _films) {
+                titles.Add(film.Value.Title);
+            }
+            return titles;
+        }
+
+
+        /*GESTION USUARIOS*/
         public void AddUserToDictionary(string name, string lastname, string email, string password, int phoneNumber) {
             User _user = new User(name, lastname, email, password, phoneNumber);
             _users[_user.Email] = _user;
@@ -88,6 +119,8 @@ namespace LibraryApp.Data {
             }
         }
 
+
+        /*JSON*/
         public void SaveUserToJson(User user) {
             try{
                 string _fileName = $"{user.Email}.json";
@@ -100,17 +133,6 @@ namespace LibraryApp.Data {
             }catch (Exception e) {
                 Console.WriteLine($"Error: {e.Message}");
             }
-        }
-
-        public List<string> GetAllTitles() {
-            List<string> titles = new List<string>();
-            foreach (var book in _books) {
-                titles.Add(book.Value.Title);
-            }
-            foreach (var film in _films) {
-                titles.Add(film.Value.Title);
-            }
-            return titles;
         }
 
     }

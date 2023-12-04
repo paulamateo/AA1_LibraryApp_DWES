@@ -5,7 +5,6 @@ namespace LibraryApp.Presentation {
     public class Menu {
         private readonly ILibraryService _libraryService;
         private readonly Style _style;
-        private string? email;
 
         public Menu(ILibraryService libraryService, Style style) {
             _libraryService = libraryService;
@@ -109,8 +108,6 @@ namespace LibraryApp.Presentation {
             Console.WriteLine("");
         }
 
-
-
         public void DisplaySearch() {
             _style.PrintOptionTitle(":detective: BÚSQUEDA DE LIBROS Y PELÍCULAS\nIntroduce el título del libro o película que deseas buscar"); 
             _style.PrintWarning("\n:a_button_blood_type: ¡Recuerda! Debes respetar tanto los espacios como las mayúsculas y tildes de los títulos.\n");
@@ -123,8 +120,8 @@ namespace LibraryApp.Presentation {
                 var answer = Convert.ToInt32(Console.ReadLine());
                 switch(answer) {
                     case 1:
-                        //AGREGAR AL HISTORIAL
-                        DisplayHistorialAccount();
+                        _libraryService.AddItemToHistory(title);
+                        Console.WriteLine($"\n{title} añadido a tu historial. En breve recibirás un correo electrónico con el contenido solicitado.\n");
                         DisplaySecondMenu();
                         break;
                     case 2:
@@ -139,55 +136,25 @@ namespace LibraryApp.Presentation {
             }
         }
 
-
-
-
-
-
         public void DisplayHistorialAccount() {
-            _style.PrintOptionTitle(":spiral_notepad: HISTORIAL DE VISUALIZACIÓN Y LECTURA\n"); 
-            var booksHRows = _libraryService.GetBooksHistoryRows();
-            var filmsHRows = _libraryService.GetFilmsHistoryRows();
+            _style.PrintOptionTitle("HISTORIAL DE VISUALIZACIÓN Y LECTURA"); 
+            var history = _libraryService.GetHistoryRows();
 
-            var tableBooksHistory = new Table()
+            var tableHistory = new Table()
                 .AddColumn("Fecha de escogida")    
                 .AddColumn("Título")
-                .AddColumn("Autor")
-                .AddColumn("Publicación")
-                .AddColumn("Páginas")
-                .AddColumn("Editorial")
-                .AddColumn("Género")
             ;
-
-            var tableFilmsHistory = new Table()    
-                .AddColumn("Fecha de escogida")    
-                .AddColumn("Título")
-                .AddColumn("Director")
-                .AddColumn("Publicación")
-                .AddColumn("Duración")
-                .AddColumn("Género")
-                .AddColumn("Edad recomendada")
-            ;
-
-            AnsiConsole.MarkupLine("\n:blue_book: LIBROS");
-            if (booksHRows != null) {
-                AnsiConsole.Write(tableBooksHistory);
-            }else {
-                Console.WriteLine("No has leído ningún libro todavía.");
+            foreach (var row in history) {
+                tableHistory.AddRow(row);
             }
 
-            AnsiConsole.MarkupLine(":cinema: PELÍCULAS:");
-            if (filmsHRows != null) {
-                AnsiConsole.Write(tableFilmsHistory);
+            if (history.Count > 0) {
+                Console.WriteLine("");
+                AnsiConsole.Write(tableHistory);
             }else {
-                Console.WriteLine("No has visto ninguna película todavía.");
+                Console.WriteLine("\nNo has leído ni visto ningún título todavía.");
             }
         }
-        
-
-
-
-
 
         public void DisplayOptionTitle(string optionName) {
             _style.PrintOptionTitle($"{optionName}\nIntroduce los datos que se piden a continuación");   
