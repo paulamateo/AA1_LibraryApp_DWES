@@ -5,7 +5,9 @@ using LibraryApp.Business;
 var _libraryRepository = new LibraryRepository();
 var _libraryService = new LibraryService(_libraryRepository);
 
-Menu _menu = new Menu(_libraryService, new Style());
+
+Menu _menu = new Menu(_libraryService);
+Style _style = new Style();
 
 bool exit = false;
 _menu.DisplayWelcome();
@@ -27,7 +29,7 @@ while (!exit) {
                     _menu.DisplaySecondMenu();
                     _menu.DisplayPanelforActions();
                 }else {
-                    Console.WriteLine("\nEl correo electrónico ya está asociado a una cuenta existente.\n");
+                    _style.PrintError("\nEl correo electrónico ya está asociado a una cuenta existente.\n");
                 }
                 break;
             case 2:
@@ -39,7 +41,7 @@ while (!exit) {
                     _menu.DisplaySecondMenu();
                     _menu.DisplayPanelforActions();
                 }else {
-                    Console.WriteLine("\nInicio de sesión fallido. Comprueba que la contraseña o el correo sean correctos.\n");
+                    _style.PrintError("\nInicio de sesión fallido. Comprueba que la contraseña o el correo sean correctos.\n");
                 }
                 break;
             case 3:
@@ -47,10 +49,10 @@ while (!exit) {
                 _menu.DisplayFarewell();
                 break;
             default:
-                Console.WriteLine($"\nLa opción {option} no está en el menú.\n");
+                _style.PrintError($"\nLa opción {option} no está en el menú.\n");
                 break;
         }
     }catch (FormatException) {
-        Console.WriteLine($"\nError de formato. Debes introducir un carácter válido.\n");
+        _style.PrintError($"\nError de formato. Debes introducir un carácter válido.\n");
     }
 }

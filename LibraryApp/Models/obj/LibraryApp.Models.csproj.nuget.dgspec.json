@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\paula\\OneDrive\\Documentos\\AA1_LibraryApp_DWES\\LibraryApp\\Models\\LibraryApp.Models.csproj": {}
+    "C:\\Users\\paula\\OneDrive\\Documentos\\NexVerse_Library\\LibraryApp\\Models\\LibraryApp.Models.csproj": {}
   },
   "projects": {
-    "C:\\Users\\paula\\OneDrive\\Documentos\\AA1_LibraryApp_DWES\\LibraryApp\\Models\\LibraryApp.Models.csproj": {
+    "C:\\Users\\paula\\OneDrive\\Documentos\\NexVerse_Library\\LibraryApp\\Models\\LibraryApp.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\paula\\OneDrive\\Documentos\\AA1_LibraryApp_DWES\\LibraryApp\\Models\\LibraryApp.Models.csproj",
+        "projectUniqueName": "C:\\Users\\paula\\OneDrive\\Documentos\\NexVerse_Library\\LibraryApp\\Models\\LibraryApp.Models.csproj",
         "projectName": "LibraryApp.Models",
-        "projectPath": "C:\\Users\\paula\\OneDrive\\Documentos\\AA1_LibraryApp_DWES\\LibraryApp\\Models\\LibraryApp.Models.csproj",
+        "projectPath": "C:\\Users\\paula\\OneDrive\\Documentos\\NexVerse_Library\\LibraryApp\\Models\\LibraryApp.Models.csproj",
         "packagesPath": "C:\\Users\\paula\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\paula\\OneDrive\\Documentos\\AA1_LibraryApp_DWES\\LibraryApp\\Models\\obj\\",
+        "outputPath": "C:\\Users\\paula\\OneDrive\\Documentos\\NexVerse_Library\\LibraryApp\\Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\paula\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -37,6 +37,12 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "Spectre.Console": {
+              "target": "Package",
+              "version": "[0.48.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

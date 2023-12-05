@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "15muxr/kHnoAo99SRtFSTSsAFUazqxYMbV22hunTrNdNqlCA5Y/odxqb//pQz6fsogPa7H9T2amxpmRM5PDTHQ==",
+  "dgSpecHash": "+nbH8vztvfraJtcDieo7KHq60dh+/0H+KXLLefRRUzwjQn6Ly+5KCu3/rrrfglbzYtT9yuZNWSFai6XZYoYCAA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\paula\\OneDrive\\Documentos\\AA1_LibraryApp_DWES\\LibraryApp\\Data\\LibraryApp.Data.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\paula\\OneDrive\\Documentos\\NexVerse_Library\\LibraryApp\\Data\\LibraryApp.Data.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\paula\\.nuget\\packages\\spectre.console\\0.48.0\\spectre.console.0.48.0.nupkg.sha512",
+    "C:\\Users\\paula\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512"
+  ],
   "logs": []
 }

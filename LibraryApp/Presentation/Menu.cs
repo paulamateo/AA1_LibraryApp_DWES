@@ -6,13 +6,13 @@ namespace LibraryApp.Presentation {
         private readonly ILibraryService _libraryService;
         private readonly Style _style;
 
-        public Menu(ILibraryService libraryService, Style style) {
+        public Menu(ILibraryService libraryService) {
             _libraryService = libraryService;
-            _style = style;
+            _style = new Style();
         }
 
         public void DisplayWelcome() { 
-            _style.PrintInfo(":books: BIBLIOTECA MULTIMEDIA 'NEXVERSE'\n");
+            _style.PrintInfo("BIBLIOTECA MULTIMEDIA 'NEXVERSE'\n");
         }
 
         public void DisplayMainMenu() {
@@ -25,7 +25,7 @@ namespace LibraryApp.Presentation {
         }
 
         public (string? name, string? lastname, string? email, string? password, int phoneNumber) DisplayPanelforCreateAccount() {
-            DisplayOptionTitle(":mobile_phone_with_arrow: CREAR CUENTA");
+            DisplayOptionTitle("CREAR CUENTA");
             _style.PrintBold("\nNombre:");
             string? name = Console.ReadLine();
             _style.PrintBold("Apellidos:");
@@ -40,7 +40,7 @@ namespace LibraryApp.Presentation {
         }
 
         public (string? email, string? password) DisplayPanelforLogin() {
-            DisplayOptionTitle(":mobile_phone: INICIAR SESIÓN");
+            DisplayOptionTitle("INICIAR SESIÓN");
             _style.PrintBold("\nCorreo electrónico:");
             string? email = Console.ReadLine();
             _style.PrintBold("Contraseña:");
@@ -83,7 +83,7 @@ namespace LibraryApp.Presentation {
         }
         
         public void DisplayTableBooks() {
-            _style.PrintOptionTitle(":closed_book: LIBROS DISPONIBLES"); 
+            _style.PrintOptionTitle("LIBROS DISPONIBLES"); 
             var tableBooks = new Table()    
                 .AddColumn("Título")
                 .AddColumn("Autor")
@@ -101,7 +101,7 @@ namespace LibraryApp.Presentation {
         }
 
         public void DisplayTableFilms() {
-            _style.PrintOptionTitle(":film_projector: PELÍCULAS DISPONIBLES"); 
+            _style.PrintOptionTitle("PELÍCULAS DISPONIBLES"); 
             var tableFilms = new Table()    
                 .AddColumn("Título")
                 .AddColumn("Director")
@@ -119,13 +119,13 @@ namespace LibraryApp.Presentation {
         }
 
         public void DisplaySearch() {
-            _style.PrintOptionTitle(":detective: BÚSQUEDA DE LIBROS Y PELÍCULAS\nIntroduce el título del libro o película que deseas buscar"); 
-            _style.PrintWarning("\n:a_button_blood_type: ¡Recuerda! Debes escribirlo bien.\n");
+            _style.PrintOptionTitle("BÚSQUEDA DE LIBROS Y PELÍCULAS\nIntroduce el título del libro o película que deseas buscar"); 
+            _style.PrintWarning("\n¡Recuerda! Debes escribirlo bien.\n");
             _style.PrintBold("Título del libro o película:");
             string? title = Console.ReadLine();
             bool titleSearch = _libraryService.SearchFunctionality(title);
             if (titleSearch) {
-                _style.PrintBold($"\n¡Sí :beaming_face_with_smiling_eyes:, tenemos el título que buscas!\n¿Te gustaría ver o leer '{title}'? Escribe 1 (Sí) / 2 (No)");
+                _style.PrintBold($"\n¡Sí, tenemos el título que buscas!\n¿Te gustaría ver o leer '{title}'? Escribe 1 (Sí) / 2 (No)");
                 var answer = Convert.ToInt32(Console.ReadLine());
                 switch(answer) {
                     case 1:
@@ -140,12 +140,12 @@ namespace LibraryApp.Presentation {
                         break;
                 }
             }else {
-                AnsiConsole.MarkupLine("\nLo sentimos :confounded_face:, no disponemos de ese título.\n");
+                AnsiConsole.MarkupLine("\nLo sentimos, no disponemos de ese título.\n");
             }
         }
 
         public void DisplayHistorialAccount() {
-            _style.PrintOptionTitle(":spiral_calendar: HISTORIAL DE VISUALIZACIÓN Y LECTURA"); 
+            _style.PrintOptionTitle("HISTORIAL DE VISUALIZACIÓN Y LECTURA"); 
             var history = _libraryService.GetHistoryRows();
 
             var tableHistory = new Table()
@@ -170,11 +170,11 @@ namespace LibraryApp.Presentation {
         }
 
          public void DisplayFarewell() { 
-            _style.PrintInfo("\n¡Hasta pronto! :yellow_heart:");
+            _style.PrintInfo("\n¡Hasta pronto!");
         }
 
         public void AccountCreated() {
-            _style.PrintSuccess("\n:check_mark_button: Cuenta creada exitosamente.\n");
+            _style.PrintSuccess("\nCuenta creada exitosamente.\n");
         }
 
         public void PrintOption() {
