@@ -1,11 +1,10 @@
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /app
-COPY . .
+COPY Data/*.csproj ./
+RUN dotnet restore
+COPY Data/. ./
 RUN dotnet build -c Release -o /out
 
 FROM mcr.microsoft.com/dotnet/runtime:7.0 AS runtime
 WORKDIR /app
-COPY --from=build /out .
-EXPOSE 6619
-EXPOSE 6611
-ENTRYPOINT ["dotnet", "LibraryApp.Presentation.dll"]
+COPY --from=build /out ./
