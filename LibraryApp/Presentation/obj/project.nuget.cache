@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qX9FPvVgDHB/MhywTDPo4c4npY+YxtcR53GO8agXuxJtFxOmdkm6JUWJCiGyoA+0eLZEhYG7HcGAt//tT8mKfA==",
+  "dgSpecHash": "Xauw35aXQEyGRHGzIdNpLE3Jn/Dp90TC2TdwMu4qpKZhxMMP782naucpMb5I3wJw4S84woeItud9SIJP9FU+fQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\paula\\OneDrive\\Documentos\\NexVerse_Library\\LibraryApp\\Presentation\\LibraryApp.Presentation.csproj",
+  "projectFilePath": "C:\\Users\\paula\\Documents\\NexVerse_Library\\LibraryApp\\Presentation\\LibraryApp.Presentation.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\paula\\.nuget\\packages\\spectre.console\\0.48.0\\spectre.console.0.48.0.nupkg.sha512",
     "C:\\Users\\paula\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512"

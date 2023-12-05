@@ -104,11 +104,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\paula\\OneDrive\\Documentos\\NexVerse_Library\\LibraryApp\\Data\\LibraryApp.Data.csproj",
+      "projectUniqueName": "C:\\Users\\paula\\Documents\\NexVerse_Library\\LibraryApp\\Data\\LibraryApp.Data.csproj",
       "projectName": "LibraryApp.Data",
-      "projectPath": "C:\\Users\\paula\\OneDrive\\Documentos\\NexVerse_Library\\LibraryApp\\Data\\LibraryApp.Data.csproj",
+      "projectPath": "C:\\Users\\paula\\Documents\\NexVerse_Library\\LibraryApp\\Data\\LibraryApp.Data.csproj",
       "packagesPath": "C:\\Users\\paula\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\paula\\OneDrive\\Documentos\\NexVerse_Library\\LibraryApp\\Data\\obj\\",
+      "outputPath": "C:\\Users\\paula\\Documents\\NexVerse_Library\\LibraryApp\\Data\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\paula\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -123,8 +123,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\paula\\OneDrive\\Documentos\\NexVerse_Library\\LibraryApp\\Models\\LibraryApp.Models.csproj": {
-              "projectPath": "C:\\Users\\paula\\OneDrive\\Documentos\\NexVerse_Library\\LibraryApp\\Models\\LibraryApp.Models.csproj"
+            "C:\\Users\\paula\\Documents\\NexVerse_Library\\LibraryApp\\Models\\LibraryApp.Models.csproj": {
+              "projectPath": "C:\\Users\\paula\\Documents\\NexVerse_Library\\LibraryApp\\Models\\LibraryApp.Models.csproj"
             }
           }
         }
@@ -160,7 +160,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.404\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.310\\RuntimeIdentifierGraph.json"
       }
     }
   }
