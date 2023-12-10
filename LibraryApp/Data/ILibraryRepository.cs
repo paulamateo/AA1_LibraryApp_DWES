@@ -12,9 +12,9 @@ namespace LibraryApp.Data {
         List<string[]> GetHistory();
         void SetCurrentUser(string email);
 
-        void SaveUserToJson(User user);
-        void SaveFilmsToJson(List<Film> _filmsData);
-        void SaveBooksToJson(List<Book> _booksData);
+        // void SaveUserToJson(User user);
+        // void SaveFilmsToJson(List<Film> _filmsData);
+        // void SaveBooksToJson(List<Book> _booksData);
 
     }
 

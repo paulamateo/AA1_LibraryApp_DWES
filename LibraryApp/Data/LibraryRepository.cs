@@ -7,11 +7,15 @@ namespace LibraryApp.Data {
         private Dictionary<string, User> _users = new Dictionary<string, User>();
         private Dictionary<string, Book> _books = new Dictionary<string, Book>();
         private Dictionary<string, Film> _films = new Dictionary<string, Film>();
+        private string _folderPath = @"..\Data\JSON";
+        private string _folderPathUsers = @"..\Data\JSON\DATA_USERS\";
         private User? _currentUser;
 
         public LibraryRepository() {
             AddBooks();
+            SaveBooksToJson();
             AddFilms();
+            SaveFilmsToJson();
         }
 
 
@@ -53,7 +57,6 @@ namespace LibraryApp.Data {
             foreach (var book in booksToAdd) {
                 _books.Add(book.Title, book);
             }
-            SaveBooksToJson(booksToAdd);
         }
 
         private void AddFilms() {
@@ -74,15 +77,16 @@ namespace LibraryApp.Data {
             foreach (var film in filmsToAdd) {
                 _films.Add(film.Title, film);
             }
-            SaveFilmsToJson(filmsToAdd);
         }
 
         public Dictionary<string, Book> GetBooksDictionary() {
             return _books;
         }
+
         public Dictionary<string, Film> GetFilmsDictionary() {
             return _films;
         }
+
         public List<string> GetAllTitles() {
             List<string> titles = new List<string>();
             foreach (var book in _books) {
@@ -116,34 +120,37 @@ namespace LibraryApp.Data {
 
 
         /*JSON*/
-        public void SaveBooksToJson(List<Book> _booksData) {
+        private void SaveUserToJson(User user) {
             try {
-                string _fileNameBooks = "DATA_BOOKS";
-                var options = new JsonSerializerOptions { WriteIndented = true };
-                string jsonString = JsonSerializer.Serialize(_booksData, options);
-                File.WriteAllText(_fileNameBooks, jsonString);
-            }catch (Exception e) {
-                Console.WriteLine($"Error: {e.Message}");
-            }
-        }
-
-        public void SaveFilmsToJson(List<Film> _filmsData) {
-            try {
-                string _fileNameFilms = "DATA_FILMS";
-                var options = new JsonSerializerOptions { WriteIndented = true };
-                string jsonString = JsonSerializer.Serialize(_filmsData, options);
-                File.WriteAllText(_fileNameFilms, jsonString);
-            }catch (Exception e) {
-                Console.WriteLine($"Error: {e.Message}");
-            }
-        }
-
-        public void SaveUserToJson(User user) {
-            try{
-                string _fileNameUsers = $"DATA_USER{user.Email}.json";
+                string _fileNameUsers = $"{user.Email}.json";
+                string _fullPath = Path.Combine(_folderPathUsers, _fileNameUsers);
                 var options = new JsonSerializerOptions { WriteIndented = true };
                 string jsonString = JsonSerializer.Serialize(user, options);
-                File.WriteAllText(_fileNameUsers, jsonString);
+                File.WriteAllText(_fullPath, jsonString);
+            }catch (Exception e) {
+                Console.WriteLine($"Error: {e.Message}");
+            }
+        }
+
+        private void SaveBooksToJson() {
+            try {
+                string _fileNameBooks = "DATA_BOOKS.json";
+                string _fullPath = Path.Combine(_folderPath, _fileNameBooks);
+                var options = new JsonSerializerOptions { WriteIndented = true };
+                string jsonString = JsonSerializer.Serialize(_books.Values, options);
+                File.WriteAllText(_fullPath, jsonString);
+            }catch (Exception e) {
+                Console.WriteLine($"Error: {e.Message}");
+            }
+        }
+
+        private void SaveFilmsToJson() {
+            try {
+                string _fileNameFilms = "DATA_FILMS.json";
+                string _fullPath = Path.Combine(_folderPath, _fileNameFilms);
+                var options = new JsonSerializerOptions { WriteIndented = true };
+                string jsonString = JsonSerializer.Serialize(_films, options);
+                File.WriteAllText(_fullPath, jsonString);
             }catch (Exception e) {
                 Console.WriteLine($"Error: {e.Message}");
             }
