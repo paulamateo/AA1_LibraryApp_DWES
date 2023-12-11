@@ -4,11 +4,18 @@ using Spectre.Console;
 namespace LibraryApp.Presentation {
     public class Menu {
         private readonly ILibraryService _libraryService;
+        private readonly LogService _logService;
         private readonly Style _style;
 
-        public Menu(ILibraryService libraryService) {
+        public Menu(ILibraryService libraryService, LogService logService) {
             _libraryService = libraryService;
+            _logService = logService;
             _style = new Style();
+        }
+
+        public void DisplayError(string errorMessage) {
+            _style.PrintError(errorMessage);
+            _logService.LogError(errorMessage);
         }
 
         public void DisplayWelcome() { 
@@ -32,11 +39,26 @@ namespace LibraryApp.Presentation {
             string? lastname = Console.ReadLine();
             _style.PrintBold("Correo electrónico:");
             string? email = Console.ReadLine();
-            _style.PrintBold("Teléfono:");
-            int phoneNumber = Convert.ToInt32(Console.ReadLine());
+            int phoneNumber;
+            while (true) {
+                _style.PrintBold("Teléfono:");
+                string? phoneNumberInput = Console.ReadLine();
+                if (ValidatePhoneNumberLength(phoneNumberInput)) {
+                    phoneNumber = Convert.ToInt32(phoneNumberInput);
+                    break;
+                }
+            }
             _style.PrintBold("Contraseña:");
             string? password = Console.ReadLine();
             return (name, lastname, email, password, phoneNumber);
+        }
+
+        public bool ValidatePhoneNumberLength(string phoneNumber) {
+            if (phoneNumber.Length != 9) {
+                DisplayError("El número de teléfono debe tener nueve caracteres.");
+                return false;
+            }
+            return true;
         }
 
         public (string? email, string? password) DisplayPanelforLogin() {
@@ -73,7 +95,7 @@ namespace LibraryApp.Presentation {
                     case 5:
                         break;
                     default:
-                        _style.PrintError($"\nLa opción {optionAction} no está en el menú.\n");
+                        DisplayError($"La opción {optionAction} no está en el menú.\n");
                         break;
                 }
                 if (optionAction == 5) {
@@ -130,17 +152,19 @@ namespace LibraryApp.Presentation {
                 switch(answer) {
                     case 1:
                         _libraryService.AddItemToHistory(title);
-                        Console.WriteLine($"\n'{title}' ha sido añadido a tu historial. En breve recibirás un correo electrónico con el contenido solicitado.\n");
+                        Console.WriteLine($"\nDisfruta de {title} abriendo el siguiente enlace en tu navegador:\n");
+                        string? link = _libraryService.GetLinkByTitle(title);
+                        Console.WriteLine($"{link}");
                         break;
                     case 2:
                         Console.WriteLine("");
                         break;
                     default:
-                        _style.PrintError("¡Esa opción no existe!\n");
+                        DisplayError("¡Esa opción no existe!\n");
                         break;
                 }
             }else {
-                AnsiConsole.MarkupLine("\nLo sentimos, no disponemos de ese título.\n");
+                AnsiConsole.MarkupLine("Lo sentimos, no disponemos de ese título.\n");
             }
         }
 

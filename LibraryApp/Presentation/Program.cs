@@ -6,10 +6,8 @@ using LibraryApp.Business;
 var _libraryRepository = new LibraryRepository();
 var _libraryService = new LibraryService(_libraryRepository);
 var _logService = new LogService();
+Menu _menu = new Menu(_libraryService, _logService);
 
-
-Menu _menu = new Menu(_libraryService);
-Style _style = new Style();
 
 bool exit = false;
 _menu.DisplayWelcome();
@@ -31,8 +29,7 @@ while (!exit) {
                     _menu.DisplaySecondMenu();
                     _menu.DisplayPanelforActions();
                 }else {
-                    _style.PrintError("\nEl correo electrónico ya está asociado a una cuenta existente.\n");
-                    _logService.LogError("Error al crear una cuenta: ya existe el correo electrónico que se ha escrito.");
+                    _menu.DisplayError("El correo electrónico ya está asociado a una cuenta existente.\n");
                 }
                 break;
             case 2:
@@ -44,8 +41,7 @@ while (!exit) {
                     _menu.DisplaySecondMenu();
                     _menu.DisplayPanelforActions();
                 }else {
-                    _style.PrintError("\nInicio de sesión fallido. Comprueba que la contraseña o el correo sean correctos.\n");
-                    _logService.LogError("Error al iniciar sesión. Posible problema con la contraseña o el correo electrónico.");
+                    _menu.DisplayError("Inicio de sesión fallido. Comprueba que la contraseña o el correo sean correctos.\n");
                 }
                 break;
             case 3:
@@ -53,12 +49,10 @@ while (!exit) {
                 _menu.DisplayFarewell();
                 break;
             default:
-                _style.PrintError("\nEsa opción no está en el menú.\n");
-                _logService.LogError("Error al introducir una opción no disponible en el menú.");
+                _menu.DisplayError("Esa opción no está en el menú.\n");
                 break;
         }
     }catch (FormatException) {
-        _style.PrintError("\nError de formato. Debes introducir un carácter válido.\n");
-        _logService.LogError("Error de formato.");
+        _menu.DisplayError("Error de formato. Debes introducir un carácter válido.\n");
     }
 }

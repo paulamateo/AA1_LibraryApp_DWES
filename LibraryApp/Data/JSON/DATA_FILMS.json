@@ -1,110 +1,112 @@
 {
-  "Spirit: El Corcel Indomable": {
-    "Title": "Spirit: El Corcel Indomable",
-    "Director": "Kelly Asbury",
-    "YearPublished": 2002,
-    "DurationInMinutes": 83,
-    "Genre": "Aventura",
-    "RecommendedAge": "Todas las edades",
-    "DurationFormatted": "1h 23min"
-  },
-  "Jurassic World: Dominion": {
-    "Title": "Jurassic World: Dominion",
-    "Director": "Colin Trevorrow",
-    "YearPublished": 2022,
-    "DurationInMinutes": 146,
-    "Genre": "Aventura",
+  "Dentro del Titanic": {
+    "Title": "Dentro del Titanic",
+    "Director": "Jeff Holland",
+    "YearPublished": 1999,
+    "DurationInMinutes": 50,
+    "Genre": "DOCUMENTAL",
     "RecommendedAge": "12",
-    "DurationFormatted": "2h 26min"
+    "Link": "https://drive.google.com/file/d/1XV_5uuLyi-filxVM42ObG_QMsDuogErr/view?usp=drive_link",
+    "DurationFormatted": "0h 50min"
   },
-  "Fast and Furious X": {
-    "Title": "Fast and Furious X",
-    "Director": "Louis Leterrier",
-    "YearPublished": 2023,
-    "DurationInMinutes": 141,
-    "Genre": "Aventura",
+  "Fast and Furious 8": {
+    "Title": "Fast and Furious 8",
+    "Director": "F. Gary Gray",
+    "YearPublished": 2017,
+    "DurationInMinutes": 148,
+    "Genre": "AVENTURA",
     "RecommendedAge": "12",
-    "DurationFormatted": "2h 21min"
+    "Link": "https://drive.google.com/file/d/1Mmpkwd-5yQoUOma0i6_b3Y5QuX5pfN3u/view?usp=drive_link",
+    "DurationFormatted": "2h 28min"
   },
-  "Cars": {
-    "Title": "Cars",
-    "Director": "John Lasseter",
-    "YearPublished": 2006,
-    "DurationInMinutes": 116,
-    "Genre": "Comedia",
+  "Fast and Furious 9": {
+    "Title": "Fast and Furious 9",
+    "Director": "Justin Lin",
+    "YearPublished": 2021,
+    "DurationInMinutes": 150,
+    "Genre": "AVENTURA",
+    "RecommendedAge": "12",
+    "Link": "https://drive.google.com/file/d/1jg3k9W-hT1SYzjpg9p0oDsCyMgKmFNWk/view?usp=drive_link",
+    "DurationFormatted": "2h 30min"
+  },
+  "Harry Potter y la Piedra Filosofal": {
+    "Title": "Harry Potter y la Piedra Filosofal",
+    "Director": "Chris Columbus",
+    "YearPublished": 2001,
+    "DurationInMinutes": 159,
+    "Genre": "AVENTURA",
     "RecommendedAge": "Todas las edades",
-    "DurationFormatted": "1h 56min"
+    "Link": "https://drive.google.com/file/d/1WojFcGeoUH-5YgKEJR5C9Mez1Nesy7AW/view?usp=drive_link",
+    "DurationFormatted": "2h 39min"
+  },
+  "Malas madres": {
+    "Title": "Malas madres",
+    "Director": "Jon Lucas",
+    "YearPublished": 2016,
+    "DurationInMinutes": 100,
+    "Genre": "COMEDIA",
+    "RecommendedAge": "12",
+    "Link": "https://drive.google.com/file/d/1NTKgDbH14dB3RjzRqAwmcAuIVHdGO27w/view?usp=drive_link",
+    "DurationFormatted": "1h 40min"
+  },
+  "Oceans 8": {
+    "Title": "Oceans 8",
+    "Director": "Gary Ross",
+    "YearPublished": 2018,
+    "DurationInMinutes": 110,
+    "Genre": "COMEDIA",
+    "RecommendedAge": "12",
+    "Link": "https://drive.google.com/file/d/19XTM3-j6ZnYtrcB6nsTqW7dfDozVyc3a/view?usp=drive_link",
+    "DurationFormatted": "1h 50min"
+  },
+  "Ocho Apellidos Catalanes": {
+    "Title": "Ocho Apellidos Catalanes",
+    "Director": "Emilio M.L.",
+    "YearPublished": 2015,
+    "DurationInMinutes": 99,
+    "Genre": "COMEDIA",
+    "RecommendedAge": "7",
+    "Link": "https://drive.google.com/file/d/1NwPnqjkUODcLf1A4u-RMHd6sBXH2S9Kl/view?usp=drive_link",
+    "DurationFormatted": "1h 39min"
   },
   "Ocho Apellidos Vascos": {
     "Title": "Ocho Apellidos Vascos",
-    "Director": "Borja Cobeaga",
+    "Director": "Emilio M.L.",
     "YearPublished": 2014,
     "DurationInMinutes": 98,
-    "Genre": "Comedia",
-    "RecommendedAge": "12",
+    "Genre": " COMEDIA",
+    "RecommendedAge": "7",
+    "Link": "https://drive.google.com/file/d/14QJ3gyql7a4xpS9vKi1Vv2h850_CAs-c/view?usp=drive_link",
     "DurationFormatted": "1h 38min"
+  },
+  "Steve Jobs": {
+    "Title": "Steve Jobs",
+    "Director": "Danny Boyle",
+    "YearPublished": 2015,
+    "DurationInMinutes": 122,
+    "Genre": "DOCUMENTAL",
+    "RecommendedAge": "7",
+    "Link": "https://drive.google.com/file/d/1OnQSjJYRXRCBzJno3axJ77WhLerpyrBE/view?usp=drive_link",
+    "DurationFormatted": "2h 2min"
+  },
+  "Top Gun Maverick": {
+    "Title": "Top Gun Maverick",
+    "Director": "Joseph Kosinski",
+    "YearPublished": 2022,
+    "DurationInMinutes": 130,
+    "Genre": "DRAMA",
+    "RecommendedAge": "13",
+    "Link": "https://drive.google.com/file/d/1_8ENnngk9g6baym1Z8P9VEw0a2Moco5t/view?usp=drive_link",
+    "DurationFormatted": "2h 10min"
   },
   "Villaviciosa de al lado": {
     "Title": "Villaviciosa de al lado",
     "Director": "Nacho G. Velilla",
     "YearPublished": 2016,
     "DurationInMinutes": 90,
-    "Genre": "Comedia",
+    "Genre": "COMEDIA",
     "RecommendedAge": "12",
+    "Link": "https://drive.google.com/file/d/1l_54cRw8nS7CY49bXUcUZSkz4wWFjVEP/view?usp=drive_link",
     "DurationFormatted": "1h 30min"
-  },
-  "Wonder": {
-    "Title": "Wonder",
-    "Director": "Stephen Chbosky",
-    "YearPublished": 2017,
-    "DurationInMinutes": 113,
-    "Genre": "Drama",
-    "RecommendedAge": "10",
-    "DurationFormatted": "1h 53min"
-  },
-  "Los Renglones Torcidos de Dios": {
-    "Title": "Los Renglones Torcidos de Dios",
-    "Director": "Oriol Paulo",
-    "YearPublished": 2022,
-    "DurationInMinutes": 154,
-    "Genre": "Drama",
-    "RecommendedAge": "12",
-    "DurationFormatted": "2h 34min"
-  },
-  "Elvis": {
-    "Title": "Elvis",
-    "Director": "Baz Luhrmann",
-    "YearPublished": 2022,
-    "DurationInMinutes": 159,
-    "Genre": "Musical",
-    "RecommendedAge": "12",
-    "DurationFormatted": "2h 39min"
-  },
-  "Oppenheimer": {
-    "Title": "Oppenheimer",
-    "Director": "Christopher Nolan",
-    "YearPublished": 2023,
-    "DurationInMinutes": 180,
-    "Genre": "Suspense",
-    "RecommendedAge": "16",
-    "DurationFormatted": "3h 0min"
-  },
-  "La Monja": {
-    "Title": "La Monja",
-    "Director": "Corin Hardy",
-    "YearPublished": 2018,
-    "DurationInMinutes": 96,
-    "Genre": "Terror",
-    "RecommendedAge": "16",
-    "DurationFormatted": "1h 36min"
-  },
-  "Insidious": {
-    "Title": "Insidious",
-    "Director": "James Wan",
-    "YearPublished": 2010,
-    "DurationInMinutes": 102,
-    "Genre": "Terror",
-    "RecommendedAge": "16",
-    "DurationFormatted": "1h 42min"
   }
 }

@@ -11,6 +11,7 @@ namespace LibraryApp.Data {
         void AddItemToHistory(string title);
         List<string[]> GetHistory();
         void SetCurrentUser(string email);
+        string? GetAllLinks(string title);
 
         // void SaveUserToJson(User user);
         // void SaveFilmsToJson(List<Film> _filmsData);

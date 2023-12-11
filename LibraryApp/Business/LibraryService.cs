@@ -45,6 +45,10 @@ namespace LibraryApp.Business {
             return filmRow;
         }
 
+        public string? GetLinkByTitle(string title) {
+            return _repository.GetAllLinks(title);
+        }
+
 
         /*GESTION USUARIOS*/
         public bool CreateUser(string name, string lastname, string email, string password, int phoneNumber) {

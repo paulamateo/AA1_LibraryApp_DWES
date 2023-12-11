@@ -5,7 +5,8 @@
     "YearPublished": 2014,
     "Pages": 400,
     "Publisher": "Molino",
-    "Genre": "Aventuras"
+    "Genre": "AVENTURAS",
+    "Link": "https://drive.google.com/file/d/1aW99Etur-yHDY3v8pV79wl9ZtV-aF3Px/view?usp=drive_link"
   },
   {
     "Title": "La Celestina",
@@ -13,7 +14,8 @@
     "YearPublished": 2013,
     "Pages": 256,
     "Publisher": "Vicens Vives",
-    "Genre": "Drama"
+    "Genre": "DRAMA",
+    "Link": "https://drive.google.com/file/d/1l5oEj7LhsfqdPZw_hggNSibjWq5KxmI6/view?usp=drive_link"
   },
   {
     "Title": "Bajo la Misma Estrella",
@@ -21,7 +23,8 @@
     "YearPublished": 2014,
     "Pages": 301,
     "Publisher": "Nube de Tinta",
-    "Genre": "Drama"
+    "Genre": "DRAMA",
+    "Link": "https://drive.google.com/file/d/1x8FFiy36D4wtH7IDUhjMMNHWdd9MwTN-/view?usp=drive_link"
   },
   {
     "Title": "Tan Poca Vida",
@@ -29,7 +32,8 @@
     "YearPublished": 2016,
     "Pages": 1008,
     "Publisher": "Lumen",
-    "Genre": "Drama"
+    "Genre": "DRAMA",
+    "Link": "https://drive.google.com/file/d/1DTWPR8gpwJDPxQq7Y_2V5dLCgjhE4QhX/view?usp=drive_link"
   },
   {
     "Title": "Fuego y Sangre",
@@ -37,7 +41,8 @@
     "YearPublished": 2023,
     "Pages": 888,
     "Publisher": "DeBolsillo",
-    "Genre": "Drama"
+    "Genre": "DRAMA",
+    "Link": "https://drive.google.com/file/d/1LeU5IXzPQbRxqSb6NDqEI6nxu-7hFcth/view?usp=drive_link"
   },
   {
     "Title": "Las Aventuras de Tom Sawyer",
@@ -45,23 +50,26 @@
     "YearPublished": 2020,
     "Pages": 32,
     "Publisher": "Susaeta",
-    "Genre": "Humor"
+    "Genre": "HUMOR",
+    "Link": "https://drive.google.com/file/d/1xtuzcFqFddiHrkqK8kdNRkaXgPHS7pIQ/view?usp=drive_link"
   },
   {
     "Title": "El Diario de Greg 1: Un pringao total",
     "Author": "Jeff Kinney",
     "YearPublished": 2008,
     "Pages": 240,
-    "Publisher": "Molino",
-    "Genre": "Humor"
+    "Publisher": "MOLINO",
+    "Genre": "Humor",
+    "Link": "https://drive.google.com/file/d/173yMfXNeasMYvhyzKUByF2I0dSn1k8p_/view?usp=drive_link"
   },
   {
-    "Title": "Las aventuras de Sherlock Holmes",
+    "Title": "Las Aventuras de Sherlock Holmes",
     "Author": "Arthur Conan Doyle",
     "YearPublished": 2022,
     "Pages": 384,
     "Publisher": "Booket",
-    "Genre": "Misterio"
+    "Genre": "MISTERIO",
+    "Link": "https://drive.google.com/file/d/1GkYmFYweyz1yTEQ1DgLTLQmBFZJim7XU/view?usp=drive_link"
   },
   {
     "Title": "La Chica del Tren",
@@ -69,15 +77,17 @@
     "YearPublished": 2018,
     "Pages": 496,
     "Publisher": "Booket",
-    "Genre": "Misterio"
+    "Genre": "MISTERIO",
+    "Link": "https://drive.google.com/file/d/18z3ZXaCT9goVrVzgPJZFu1Qb_q1TjXYE/view?usp=drive_link"
   },
   {
-    "Title": "El Resplandor",
-    "Author": "Stephen King",
-    "YearPublished": 2021,
-    "Pages": 656,
-    "Publisher": "DeBolsillo",
-    "Genre": "Terror"
+    "Title": "La Novia Gitana",
+    "Author": "Carmen Mola",
+    "YearPublished": 2018,
+    "Pages": 408,
+    "Publisher": "Alfaguara",
+    "Genre": "MISTERIO",
+    "Link": "https://drive.google.com/file/d/1anthPexrabbfz3P6YkP5fK7qTSHdunSM/view?usp=drive_link"
   },
   {
     "Title": "Jaque al Psicoanalista",
@@ -85,14 +95,7 @@
     "YearPublished": 2023,
     "Pages": 440,
     "Publisher": "Booket",
-    "Genre": "Thriller"
-  },
-  {
-    "Title": "La Bestia",
-    "Author": "Carmen Mola",
-    "YearPublished": 2021,
-    "Pages": 544,
-    "Publisher": "Planeta",
-    "Genre": "Thriller"
+    "Genre": "THRILLER",
+    "Link": "https://drive.google.com/file/d/1DMnCjpiWOyRhQ88HqOWjWsi7FR3ej_AW/view?usp=drive_link"
   }
 ]
