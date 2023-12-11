@@ -40,4 +40,5 @@ COPY --from=build /app/out .
 # Exponer puertos y configurar el punto de entrada
 EXPOSE 6619
 EXPOSE 6611
+
 ENTRYPOINT ["dotnet", "LibraryApp.Presentation.dll"]
