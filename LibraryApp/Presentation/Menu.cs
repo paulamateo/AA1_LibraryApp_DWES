@@ -152,7 +152,7 @@ namespace LibraryApp.Presentation {
                 switch(answer) {
                     case 1:
                         _libraryService.AddItemToHistory(title);
-                        Console.WriteLine($"\nDisfruta de {title} abriendo el siguiente enlace en tu navegador:\n");
+                       _style.PrintItem($"\nDisfruta de {title} abriendo el siguiente enlace en tu navegador:");
                         string? link = _libraryService.GetLinkByTitle(title);
                         Console.WriteLine($"{link}");
                         break;
@@ -194,11 +194,11 @@ namespace LibraryApp.Presentation {
         }
 
          public void DisplayFarewell() { 
-            _style.PrintInfo("\n¡Hasta pronto!");
+            _style.PrintInfo("¡Hasta pronto!");
         }
 
         public void AccountCreated() {
-            _style.PrintSuccess("\nCuenta creada exitosamente.\n");
+            _style.PrintSuccess("Cuenta creada exitosamente.\n");
         }
 
         public void PrintOption() {

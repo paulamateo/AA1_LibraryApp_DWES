@@ -13,10 +13,6 @@ namespace LibraryApp.Data {
         void SetCurrentUser(string email);
         string? GetAllLinks(string title);
 
-        // void SaveUserToJson(User user);
-        // void SaveFilmsToJson(List<Film> _filmsData);
-        // void SaveBooksToJson(List<Book> _booksData);
-
     }
 
 }

@@ -2,7 +2,6 @@ using LibraryApp.Data;
 
 namespace LibraryApp.Business {
     public class LibraryService : ILibraryService {
-
         private readonly ILibraryRepository _repository;
 
         public LibraryService(ILibraryRepository repository) {
