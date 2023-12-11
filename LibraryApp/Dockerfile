@@ -29,6 +29,9 @@ COPY . ./
 # Modificar la ruta del comando dotnet build
 RUN dotnet build -c Release -o /app/out Presentation/LibraryApp.Presentation.csproj
 
+# Crear un volumen en /app/Data para persistir datos de la capa Data
+VOLUME /app/Data
+
 # Establecer la imagen base final con ASP.NET Core
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS final
 WORKDIR /app/Presentation
