@@ -2,7 +2,6 @@ using LibraryApp.Data;
 
 namespace LibraryApp.Business {
     public class LibraryService : ILibraryService {
-
         private readonly ILibraryRepository _repository;
 
         public LibraryService(ILibraryRepository repository) {
@@ -43,6 +42,10 @@ namespace LibraryApp.Business {
                 filmRow.Add(row);
             }
             return filmRow;
+        }
+
+        public string? GetLinkByTitle(string title) {
+            return _repository.GetAllLinks(title);
         }
 
 

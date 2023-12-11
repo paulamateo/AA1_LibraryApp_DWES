@@ -7,15 +7,17 @@ public class Film {
     public int DurationInMinutes { get; }
     public string Genre { get; }
     public string RecommendedAge { get; }
+    public string Link { get; }
     public string DurationFormatted => GetFormattedDuration();
 
-    public Film(string title, string director, int yearPublished, int durationInMinutes, string genre, string recommendedAge) {
+    public Film(string title, string director, int yearPublished, int durationInMinutes, string genre, string recommendedAge, string link) {
         Title = title;
         Director = director;
         YearPublished = yearPublished;
         DurationInMinutes = durationInMinutes;
         Genre = genre;
         RecommendedAge = recommendedAge;
+        Link = link;
     }
     
     private string GetFormattedDuration() {
