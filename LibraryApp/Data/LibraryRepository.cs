@@ -134,6 +134,9 @@ namespace LibraryApp.Data {
             try {
                 _fileNameUsers = $"{user.Email}.json";
                 string _fullPath = Path.Combine(_folderPathUsers, _fileNameUsers);
+                if (!Directory.Exists(_folderPathUsers)) {
+                    Directory.CreateDirectory(_folderPathUsers);
+                }
                 var options = new JsonSerializerOptions { WriteIndented = true };
                 string jsonString = JsonSerializer.Serialize(user, options);
                 File.WriteAllText(_fullPath, jsonString);
