@@ -7,8 +7,8 @@ namespace LibraryApp.Data {
         private Dictionary<string, User> _users = new Dictionary<string, User>();
         private Dictionary<string, Book> _books = new Dictionary<string, Book>();
         private Dictionary<string, Film> _films = new Dictionary<string, Film>();
-        private string _folderPath = @"..\Data\JSON";
-        private string _folderPathUsers = @"..\Data\JSON\DATA_USERS\";
+        private string _folderPath = @"..\LibraryApp\Data\JSON";
+        private string _folderPathUsers = @"..\LibraryApp\Data\JSON\DATA_USERS\";
         private string? _fileNameUsers;
         private User? _currentUser;
 
