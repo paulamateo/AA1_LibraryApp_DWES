@@ -7,8 +7,7 @@ namespace LibraryApp.Data {
         private Dictionary<string, User> _users = new Dictionary<string, User>();
         private Dictionary<string, Book> _books = new Dictionary<string, Book>();
         private Dictionary<string, Film> _films = new Dictionary<string, Film>();
-        private string _folderPath = @"..\LibraryApp\Data\JSON";
-        private string _folderPathUsers = @"..\LibraryApp\Data\JSON\DATA_USERS\";
+        private string _folderPathUsers = @"../Presentation/DATA_USERS";
         private string? _fileNameUsers;
         private User? _currentUser;
 
@@ -162,10 +161,9 @@ namespace LibraryApp.Data {
         private void SaveBooksToJson() {
             try {
                 string _fileNameBooks = "DATA_BOOKS.json";
-                string _fullPath = Path.Combine(_folderPath, _fileNameBooks);
                 var options = new JsonSerializerOptions { WriteIndented = true };
                 string jsonString = JsonSerializer.Serialize(_books.Values, options);
-                File.WriteAllText(_fullPath, jsonString);
+                File.WriteAllText(_fileNameBooks, jsonString);
             }catch (Exception e) {
                 Console.WriteLine($"Error: {e.Message}");
             }
@@ -174,10 +172,9 @@ namespace LibraryApp.Data {
         private void SaveFilmsToJson() {
             try {
                 string _fileNameFilms = "DATA_FILMS.json";
-                string _fullPath = Path.Combine(_folderPath, _fileNameFilms);
                 var options = new JsonSerializerOptions { WriteIndented = true };
                 string jsonString = JsonSerializer.Serialize(_films, options);
-                File.WriteAllText(_fullPath, jsonString);
+                File.WriteAllText(_fileNameFilms, jsonString);
             }catch (Exception e) {
                 Console.WriteLine($"Error: {e.Message}");
             }
