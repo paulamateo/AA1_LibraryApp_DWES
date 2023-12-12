@@ -114,8 +114,10 @@ namespace LibraryApp.Presentation {
             Console.WriteLine("Título del libro o película:");  
             string? title = Console.ReadLine();
 
-            bool titleSearch = _libraryService.SearchFunctionality(title);
-            if (titleSearch) {
+            bool titleSearch = _libraryService.SearchTitle(title);
+            bool authDir = _libraryService.SearchAuthDir(title);
+
+            if (titleSearch || authdir) {
                 AnsiConsole.MarkupLine($"\n¡Sí :beaming_face_with_smiling_eyes:, tenemos el título que buscas!\n¿Te gustaría ver o leer '{title}'? Escribe 1 (Sí) / 2 (No)");
                 var answer = Convert.ToInt32(Console.ReadLine());
                 switch(answer) {

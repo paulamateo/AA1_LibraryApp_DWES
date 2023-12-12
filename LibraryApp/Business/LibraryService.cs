@@ -9,7 +9,22 @@ namespace LibraryApp.Business {
             _repository = repository;
         }
 
-        /*MOSTRAR LIBROS Y PELICULAS*/
+
+        /*HISTORIAL USUARIO*/
+        public void SetCurrentUser(string email) {
+            _repository.SetCurrentUser(email);
+        }
+
+        public void AddItemToHistory(string title) {
+            _repository.AddItemToHistory(title);
+        }
+
+        public List<string[]> GetHistoryRows() {
+            return _repository.GetHistory();
+        }
+        
+
+        /*GESTION LIBROS Y PELICULAS*/
         public List<string[]> GetBooksRows() {
             var _booksData = _repository.GetBooksDictionary();
             List<string[]> bookRow = new List<string[]>();
@@ -30,7 +45,8 @@ namespace LibraryApp.Business {
             return filmRow;
         }
 
-        /*CUENTA*/
+
+        /*GESTION USUARIOS*/
         public bool CreateUser(string name, string lastname, string email, string password, int phoneNumber) {
             if (!_repository.EmailExists(email)) {
                 _repository.AddUserToDictionary(name, lastname, email, password, phoneNumber);
@@ -44,9 +60,20 @@ namespace LibraryApp.Business {
             return _repository.VerifyLogin(email, password);
         }
 
-        public bool SearchFunctionality(string title) {
+
+        /*BUSCAR*/
+        public bool SearchTitle(string title) {
             bool isTitleInLibrary = _repository.GetAllTitles().Contains(title);
             if (isTitleInLibrary) {
+                return true;
+            }else {
+                return false;
+            }
+        }
+        public bool SearchAuthDir(string authDir) {
+
+            bool isAuthDirInLibrary = _repository.GetAllAuthors_Directors().Contains(authDir);
+            if (isAuthDirInLibrary) {
                 return true;
             }else {
                 return false;

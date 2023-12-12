@@ -6,7 +6,8 @@ namespace LibraryApp.Business {
         List<string[]> GetFilmsRows();
         bool CreateUser(string name, string lastname, string email, string password, int phoneNumber);
         bool AuthenticateUser(string email, string password);
-        bool SearchFunctionality(string title);
+        bool SearchTitle(string title);
+        bool SearchAuthDir(string authDir);
 
     }
 }

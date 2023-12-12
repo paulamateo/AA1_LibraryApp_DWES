@@ -7,66 +7,107 @@ namespace LibraryApp.Data {
         private Dictionary<string, User> _users = new Dictionary<string, User>();
         private Dictionary<string, Book> _books = new Dictionary<string, Book>();
         private Dictionary<string, Film> _films = new Dictionary<string, Film>();
-        private string _folderPath = @"..\Data\DATA_USERS";
+        private User? _currentUser;
 
         public LibraryRepository() {
             AddBooks();
             AddFilms();
         }
 
+
+        /*HISTORIAL USUARIO*/
+        public void SetCurrentUser(string email) {
+            if (_users.TryGetValue(email, out var user)) {
+                _currentUser = user;
+            }
+        }
+
+        public void AddItemToHistory(string title) {
+            if (_currentUser != null) {
+                string[] item = new string[] { DateTime.Now.ToString(), title };
+                _currentUser.History.Add(item);
+            }
+        }
+
+        public List<string[]> GetHistory() {
+            return _currentUser?.History ?? new List<string[]>();
+        }
+
+
+        /*GESTION LIBROS Y PELICULAS*/
         private void AddBooks() {
             var booksToAdd = new List<Book> {
-                new Book("Los Juegos del Hambre", "Suzanne Collins", 2014, 400, "Molino", "Ciencia Ficción"),
-                new Book("Citónica", "Brandon Sanderson", 2021, 456, "Nova", "Ciencia Ficción"),
-                new Book("La Celestina", "Fernando de Rojas", 2013, 256, "Vicens Vives", "Clásico"),
+                new Book("Los Juegos del Hambre", "Suzanne Collins", 2014, 400, "Molino", "Aventuras"),
+                new Book("La Celestina", "Fernando de Rojas", 2013, 256, "Vicens Vives", "Drama"),
                 new Book("Bajo la Misma Estrella", "John Green", 2014, 301, "Nube de Tinta", "Drama"),
-                new Book("Geronimo Stilton: En el Reino de la Fantasía", "Elisabetta Dami", 2005, 384, "Destino", "Fantasía"),
-                new Book("Percy Jackson y los Dioses del Olimpo: El Ladrón del Rayo", "Rick Riordan", 2023, 288, "Salamandra", "Fantasía"),
-                new Book("Charlie y la Fábrica de Chocolate", "Roald Dahl", 2016, 240, "Santillana", "Fantasía"),
-                new Book("Fuego y Sangre", "George R.R. Martin", 2018, 880, "Plaza & Janés", "Fantasía Épica"),
-                new Book("Roma soy yo", "Santiago Posteguillo", 2022, 752, "Ediciones B", "Histórico"),
+                new Book("Tan Poca Vida", "Hanya Yanagihara", 2016, 1008, "Lumen", "Drama"),
+                new Book("Fuego y Sangre", "George R.R. Martin", 2023, 888, "DeBolsillo", "Drama"),
+                new Book("Las Aventuras de Tom Sawyer", "Mark Twain", 2020, 32, "Susaeta", "Humor"),
                 new Book("El Diario de Greg 1: Un pringao total", "Jeff Kinney", 2008, 240, "Molino", "Humor"),
-                new Book("Cómo vender una Casa Encantada", "Grady Hendrix", 2023, 440, "Minotauro", "Humor"),
-                new Book("Tom Gates: Excusas perfectas (y otras cosillas geniales)", "Liz Pichon", 2012, 352, "Bruño", "Humor"),
-                new Book("El Resplandor", "Stephen King", 2021, 656, "DeBols!llo", "Terror"),
+                new Book("Las aventuras de Sherlock Holmes", "Arthur Conan Doyle", 2022, 384, "Booket", "Misterio"),
+                new Book("La Chica del Tren", "Paula Hawkins", 2018, 496, "Booket", "Misterio"),
+                new Book("El Resplandor", "Stephen King", 2021, 656, "DeBolsillo", "Terror"),
+                new Book("Jaque al Psicoanalista", "John Katzenbach", 2023, 440, "Booket", "Thriller"),
                 new Book("La Bestia", "Carmen Mola", 2021, 544, "Planeta", "Thriller")
             };
             foreach (var book in booksToAdd) {
                 _books.Add(book.Title, book);
             }
+            SaveBooksToJson(booksToAdd);
         }
 
         private void AddFilms() {
             var filmsToAdd = new List<Film> {
-                new Film("Megalodón", "Jon Turteltaub", 2018, 113, "Acción", "+12"),
-                new Film("Fast and Furious X", "Louis Leterrier", 2023, 141, "Acción", "+12"),
-                new Film("Jurassic World: Dominion", "Colin Trevorrow", 2022, 146, "Acción", "+12"),
-                new Film("Cars", "John Lasseter", 2006, 116, "Animación", "Todas las edades"),
-                new Film("Spirit: El Corcel Indomable", "Kelly Asbury", 2002, 83, "Animación", "Todas las edades"),
-                new Film("Elvis", "Baz Luhrmann", 2022, 159, "Biográfico", "+12"),
-                new Film("Yucatán", "Daniel Monzón", 2018, 130, "Comedia", "+12"),
-                new Film("Ocean's 8", "Gary Ross", 2018, 110, "Comedia", "+12"),
-                new Film("Transformers", "Michael Bay", 2007, 143, "Ciencia ficción", "+12"),
-                new Film("Ocho Apellidos Vascos", "Emilio Martínez Lázaro", 2014, 98, "Comedia", "+12"),
-                new Film("Villaviciosa de al lado", "Nacho G. Velilla", 2016, 90, "Comedia", "+12"),
-                new Film("Wonder", "Stephen Chbosky", 2017, 113, "Drama", "+10"),
-                new Film("Los Renglones Torcidos de Dios", "Oriol Paulo", 2022, 154, "Drama", "+12"),
-                new Film("Oppenheimer", "Christopher Nolan", 2023, 180, "Suspense", "+16"),
-                new Film("La Monja", "Corin Hardy", 2018, 96, "Terror", "+16")
+                new Film("Spirit: El Corcel Indomable", "Kelly Asbury", 2002, 83, "Aventura", "Todas las edades"),
+                new Film("Jurassic World: Dominion", "Colin Trevorrow", 2022, 146, "Aventura", "12"),
+                new Film("Fast and Furious X", "Louis Leterrier", 2023, 141, "Aventura", "12"),
+                new Film("Cars", "John Lasseter", 2006, 116, "Comedia", "Todas las edades"),
+                new Film("Ocho Apellidos Vascos", "Borja Cobeaga", 2014, 98, "Comedia", "12"),
+                new Film("Villaviciosa de al lado", "Nacho G. Velilla", 2016, 90, "Comedia", "12"),
+                new Film("Wonder", "Stephen Chbosky", 2017, 113, "Drama", "10"),
+                new Film("Los Renglones Torcidos de Dios", "Oriol Paulo", 2022, 154, "Drama", "12"),
+                new Film("Elvis", "Baz Luhrmann", 2022, 159, "Musical", "12"),
+                new Film("Oppenheimer", "Christopher Nolan", 2023, 180, "Suspense", "16"),
+                new Film("La Monja", "Corin Hardy", 2018, 96, "Terror", "16"),
+                new Film("Insidious", "James Wan", 2010, 102, "Terror", "16")
             };
             foreach (var film in filmsToAdd) {
                 _films.Add(film.Title, film);
             }
+            SaveFilmsToJson(filmsToAdd);
         }
 
         public Dictionary<string, Book> GetBooksDictionary() {
             return _books;
         }
-
         public Dictionary<string, Film> GetFilmsDictionary() {
             return _films;
         }
+        public List<string> GetAllTitles() {
+            List<string> titles = new List<string>();
+            foreach (var book in _books) {
+                titles.Add(book.Value.Title);
+            }
+            foreach (var film in _films) {
+                titles.Add(film.Value.Title);
+            }
+            return titles;
+        }
 
+        public List<string> GetAllAuthors_Directors() {
+            List<string> titles = new List<string>();
+            foreach (var book in _books) {
+                authDir.Add(book.Value.Author);
+            }
+            foreach (var film in _films) {
+                authDir.Add(film.Value.Director);
+            }
+            return authDir;
+        }
+
+
+
+        /*GESTION USUARIOS*/
         public void AddUserToDictionary(string name, string lastname, string email, string password, int phoneNumber) {
             User _user = new User(name, lastname, email, password, phoneNumber);
             _users[_user.Email] = _user;
@@ -85,29 +126,39 @@ namespace LibraryApp.Data {
             }
         }
 
-        public void SaveUserToJson(User user) {
-            try{
-                string _fileName = $"{user.Email}.json";
-                string fullPath = Path.Combine(_folderPath, _fileName);
-                Directory.CreateDirectory(_folderPath);
+
+        /*JSON*/
+        public void SaveBooksToJson(List<Book> _booksData) {
+            try {
+                string _fileNameBooks = "DATA_BOOKS";
                 var options = new JsonSerializerOptions { WriteIndented = true };
-                string jsonString = JsonSerializer.Serialize(user, options);
-                File.WriteAllText(fullPath, jsonString);
-                Console.WriteLine($"Usuario {user.Email} serializado y guardado en {fullPath}");
+                string jsonString = JsonSerializer.Serialize(_booksData, options);
+                File.WriteAllText(_fileNameBooks, jsonString);
             }catch (Exception e) {
                 Console.WriteLine($"Error: {e.Message}");
             }
         }
 
-        public List<string> GetAllTitles() {
-            List<string> titles = new List<string>();
-            foreach (var book in _books) {
-                titles.Add(book.Value.Title);
+        public void SaveFilmsToJson(List<Film> _filmsData) {
+            try {
+                string _fileNameFilms = "DATA_FILMS";
+                var options = new JsonSerializerOptions { WriteIndented = true };
+                string jsonString = JsonSerializer.Serialize(_filmsData, options);
+                File.WriteAllText(_fileNameFilms, jsonString);
+            }catch (Exception e) {
+                Console.WriteLine($"Error: {e.Message}");
             }
-            foreach (var film in _films) {
-                titles.Add(film.Value.Title);
+        }
+
+        public void SaveUserToJson(User user) {
+            try{
+                string _fileNameUsers = $"DATA_USER{user.Email}.json";
+                var options = new JsonSerializerOptions { WriteIndented = true };
+                string jsonString = JsonSerializer.Serialize(user, options);
+                File.WriteAllText(_fileNameUsers, jsonString);
+            }catch (Exception e) {
+                Console.WriteLine($"Error: {e.Message}");
             }
-            return titles;
         }
 
     }

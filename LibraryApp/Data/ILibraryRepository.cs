@@ -9,6 +9,7 @@ namespace LibraryApp.Data {
         bool VerifyLogin(string email, string password);
         void SaveUserToJson(User user);
         List<string> GetAllTitles();
+        List<string> GetAllAuthors_Directors();
 
     }
 
