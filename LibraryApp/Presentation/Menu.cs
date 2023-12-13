@@ -49,8 +49,7 @@ namespace LibraryApp.Presentation {
                     break;
                 }
             }
-            _style.PrintBold("Contraseña:");
-            string? password = Console.ReadLine();
+            string? password = ReadPasswordFromConsole();
             return (name, lastname, email, password, phoneNumber);
         }
 
@@ -66,9 +65,30 @@ namespace LibraryApp.Presentation {
             DisplayOptionTitle(":desktop_computer:  INICIAR SESIÓN");
             _style.PrintBold("\nCorreo electrónico:");
             string? email = Console.ReadLine();
-            _style.PrintBold("Contraseña:");
-            string? password = Console.ReadLine();
+            string? password = ReadPasswordFromConsole();
             return (email, password);
+        }
+
+        private string ReadPasswordFromConsole() {
+            _style.PrintBold("Contraseña:");
+            string password = "";
+
+            ConsoleKeyInfo key;
+            do {
+                key = Console.ReadKey(intercept: true);
+                if (key.Key == ConsoleKey.Backspace) {
+                    if (password.Length > 0) {
+                        password = password.Substring(0, password.Length - 1);
+                        Console.Write("\b \b"); 
+                    }
+                }else if (char.IsLetterOrDigit(key.KeyChar)) {
+                    password += key.KeyChar;
+                    Console.Write("*");
+                }
+            } while (key.Key != ConsoleKey.Enter);
+
+            Console.WriteLine(); 
+            return password;
         }
 
         public void DisplayPanelforActions() {
