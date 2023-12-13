@@ -10,6 +10,9 @@ namespace LibraryApp.Business {
         void AddItemToHistory(string title);
         List<string[]> GetHistoryRows();
         void SetCurrentUser(string email);
+        string? GetLinkByTitle(string title);
+        bool SearchAuthor(string author);
+        List<string> GetBooksByAuthor(string author);
 
     }
 }

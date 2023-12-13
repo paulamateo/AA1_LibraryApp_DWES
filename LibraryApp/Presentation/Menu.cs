@@ -4,15 +4,23 @@ using Spectre.Console;
 namespace LibraryApp.Presentation {
     public class Menu {
         private readonly ILibraryService _libraryService;
+        private readonly LogService _logService;
         private readonly Style _style;
 
-        public Menu(ILibraryService libraryService) {
+        
+        public Menu(ILibraryService libraryService, LogService logService) {
             _libraryService = libraryService;
+            _logService = logService;
             _style = new Style();
         }
 
+        public void DisplayError(string errorMessage) {
+            _style.PrintError(errorMessage);
+            _logService.LogError(errorMessage);
+        }
+
         public void DisplayWelcome() { 
-            _style.PrintInfo("BIBLIOTECA MULTIMEDIA 'NEXVERSE'\n");
+            _style.PrintInfo("\n:books::house:  BIBLIOTECA MULTIMEDIA 'NEXVERSE'\n");
         }
 
         public void DisplayMainMenu() {
@@ -25,27 +33,62 @@ namespace LibraryApp.Presentation {
         }
 
         public (string? name, string? lastname, string? email, string? password, int phoneNumber) DisplayPanelforCreateAccount() {
-            DisplayOptionTitle("CREAR CUENTA");
+            DisplayOptionTitle(":ghost:  CREAR CUENTA");
             _style.PrintBold("\nNombre:");
             string? name = Console.ReadLine();
             _style.PrintBold("Apellidos:");
             string? lastname = Console.ReadLine();
             _style.PrintBold("Correo electrónico:");
             string? email = Console.ReadLine();
-            _style.PrintBold("Teléfono:");
-            int phoneNumber = Convert.ToInt32(Console.ReadLine());
-            _style.PrintBold("Contraseña:");
-            string? password = Console.ReadLine();
+            int phoneNumber;
+            while (true) {
+                _style.PrintBold("Teléfono:");
+                string? phoneNumberInput = Console.ReadLine();
+                if (ValidatePhoneNumberLength(phoneNumberInput)) {
+                    phoneNumber = Convert.ToInt32(phoneNumberInput);
+                    break;
+                }
+            }
+            string? password = ReadPasswordFromConsole();
             return (name, lastname, email, password, phoneNumber);
         }
 
+        public bool ValidatePhoneNumberLength(string phoneNumber) {
+            if (phoneNumber.Length != 9) {
+                DisplayError("El número de teléfono debe tener nueve caracteres.");
+                return false;
+            }
+            return true;
+        }
+
         public (string? email, string? password) DisplayPanelforLogin() {
-            DisplayOptionTitle("INICIAR SESIÓN");
+            DisplayOptionTitle(":desktop_computer:  INICIAR SESIÓN");
             _style.PrintBold("\nCorreo electrónico:");
             string? email = Console.ReadLine();
-            _style.PrintBold("Contraseña:");
-            string? password = Console.ReadLine();
+            string? password = ReadPasswordFromConsole();
             return (email, password);
+        }
+
+        private string ReadPasswordFromConsole() {
+            _style.PrintBold("Contraseña:");
+            string password = "";
+
+            ConsoleKeyInfo key;
+            do {
+                key = Console.ReadKey(intercept: true);
+                if (key.Key == ConsoleKey.Backspace) {
+                    if (password.Length > 0) {
+                        password = password.Substring(0, password.Length - 1);
+                        Console.Write("\b \b"); 
+                    }
+                }else if (char.IsLetterOrDigit(key.KeyChar)) {
+                    password += key.KeyChar;
+                    Console.Write("*");
+                }
+            } while (key.Key != ConsoleKey.Enter);
+
+            Console.WriteLine(); 
+            return password;
         }
 
         public void DisplayPanelforActions() {
@@ -73,7 +116,7 @@ namespace LibraryApp.Presentation {
                     case 5:
                         break;
                     default:
-                        _style.PrintError($"\nLa opción {optionAction} no está en el menú.\n");
+                        DisplayError($"La opción {optionAction} no está en el menú.\n");
                         break;
                 }
                 if (optionAction == 5) {
@@ -83,7 +126,7 @@ namespace LibraryApp.Presentation {
         }
         
         public void DisplayTableBooks() {
-            _style.PrintOptionTitle("LIBROS DISPONIBLES"); 
+            _style.PrintOptionTitle(":information:  LIBROS DISPONIBLES"); 
             var tableBooks = new Table()    
                 .AddColumn("Título")
                 .AddColumn("Autor")
@@ -101,7 +144,7 @@ namespace LibraryApp.Presentation {
         }
 
         public void DisplayTableFilms() {
-            _style.PrintOptionTitle("PELÍCULAS DISPONIBLES"); 
+            _style.PrintOptionTitle(":information:  PELÍCULAS DISPONIBLES"); 
             var tableFilms = new Table()    
                 .AddColumn("Título")
                 .AddColumn("Director")
@@ -119,33 +162,97 @@ namespace LibraryApp.Presentation {
         }
 
         public void DisplaySearch() {
-            _style.PrintOptionTitle("BÚSQUEDA DE LIBROS Y PELÍCULAS\nIntroduce el título del libro o película que deseas buscar"); 
-            _style.PrintWarning("\n¡Recuerda! Debes escribirlo bien.\n");
-            _style.PrintBold("Título del libro o película:");
+            _style.PrintOptionTitle("BÚSQUEDA DE LIBROS Y PELÍCULAS"); 
+            Console.WriteLine("1 - Buscar por TÍTULO (libro o película)");
+            Console.WriteLine("2 - Buscar por AUTOR (libro)");
+            _style.PrintWarning("¡Recuerda! Debes escribirlo bien.");
+            Console.WriteLine("\nElige una opción:");
+            var option = Convert.ToInt32(Console.ReadLine());
+            switch (option) {
+                case 1:
+                    SearchByTitle();
+                    break;
+                case 2:
+                    SearchByAuthor();
+                    break;
+                default:
+                    DisplayError("¡Esa opción no existe!\n");
+                    break;
+            }
+        }
+
+        private void SearchByTitle() {
+            _style.PrintBold("\nTítulo del libro o película:");
             string? title = Console.ReadLine();
-            bool titleSearch = _libraryService.SearchFunctionality(title);
-            if (titleSearch) {
-                _style.PrintBold($"\n¡Sí, tenemos el título que buscas!\n¿Te gustaría ver o leer '{title}'? Escribe 1 (Sí) / 2 (No)");
-                var answer = Convert.ToInt32(Console.ReadLine());
-                switch(answer) {
-                    case 1:
-                        _libraryService.AddItemToHistory(title);
-                        Console.WriteLine($"\n'{title}' ha sido añadido a tu historial. En breve recibirás un correo electrónico con el contenido solicitado.\n");
-                        break;
-                    case 2:
-                        Console.WriteLine("");
-                        break;
-                    default:
-                        _style.PrintError("¡Esa opción no existe!\n");
-                        break;
+
+            if (_libraryService.SearchFunctionality(title)) {
+                ProcessSearchResult(title);
+            } else {
+                AnsiConsole.MarkupLine("Lo sentimos, no tenemos ese título. :broken_heart:\n");
+            }
+        }
+
+        private void SearchByAuthor() {
+            _style.PrintBold("Autor:");
+            string? author = Console.ReadLine();
+            Console.WriteLine("");
+            if (_libraryService.SearchAuthor(author)) {
+                _style.PrintBold($"\n¡Sí, tenemos a {author} en nuestras estanterías! :grinning_face:\n¿Te gustaría leer alguna obra suya? Escribe 1 (SÍ) / 2 (NO)");
+                var answerAuthor = Convert.ToInt32(Console.ReadLine());
+
+                if (answerAuthor == 1) {
+                    Console.WriteLine("");
+                    List<string> booksByAuthor = _libraryService.GetBooksByAuthor(author);
+
+                    if (booksByAuthor.Count > 0) {
+                        var table = new Table();
+                            table.AddColumn(new TableColumn($"LIBROS DE {author}").Centered());
+                        foreach (var bookTitle in booksByAuthor) {
+                            table.AddRow(bookTitle);
+                        }  
+                        AnsiConsole.Write(table);
+
+                        Console.WriteLine("\nLibro escogido:");
+                        string? selectedTitle = Console.ReadLine();
+
+                        if (booksByAuthor.Contains(selectedTitle)) {
+                            ProcessSearchResult(selectedTitle);
+                        } else {
+                            Console.WriteLine($"No tenemos ese libro asociado con {author}.");
+                        }
+                    } else {
+                        Console.WriteLine($"No se encontraron libros del autor {author}.");
+                    }
+                } else if (answerAuthor != 2) {
+                    DisplayError("¡Esa opción no existe!\n");
                 }
             }else {
-                AnsiConsole.MarkupLine("\nLo sentimos, no disponemos de ese título.\n");
+                AnsiConsole.MarkupLine("Lo sentimos, no tenemos a ese autor en nuestras estanterías. :broken_heart:\n");
+            }
+        }
+
+        private void ProcessSearchResult(string title) {
+            _style.PrintBold($"\n¡Sí, tenemos el título que buscas!  :grinning_face:\n¿Te gustaría ver o leer '{title}'? Escribe 1 (SÍ) / 2 (NO)");
+            var answer = Convert.ToInt32(Console.ReadLine());
+
+            switch(answer) {
+                case 1:
+                    _libraryService.AddItemToHistory(title);
+                    _style.PrintItem($"\nDisfruta de '{title}' abriendo el siguiente enlace en tu navegador:");
+                    string? link = _libraryService.GetLinkByTitle(title);
+                    Console.WriteLine($"{link}");
+                    break;
+                case 2:
+                    Console.WriteLine("");
+                    break;
+                default:
+                    DisplayError("¡Esa opción no existe!\n");
+                    break;
             }
         }
 
         public void DisplayHistorialAccount() {
-            _style.PrintOptionTitle("HISTORIAL DE VISUALIZACIÓN Y LECTURA"); 
+            _style.PrintOptionTitle(":clipboard:  HISTORIAL DE VISUALIZACIÓN Y LECTURA"); 
             var history = _libraryService.GetHistoryRows();
 
             var tableHistory = new Table()
@@ -170,16 +277,16 @@ namespace LibraryApp.Presentation {
         }
 
          public void DisplayFarewell() { 
-            _style.PrintInfo("\n¡Hasta pronto!");
+            _style.PrintInfo("¡Hasta pronto!  :yellow_heart:");
         }
 
         public void AccountCreated() {
-            _style.PrintSuccess("\nCuenta creada exitosamente.\n");
+            _style.PrintSuccess(":check_mark_button:  Cuenta creada exitosamente.\n");
         }
 
         public void PrintOption() {
             Console.WriteLine("");
-            _style.PrintBold("ELIGE UNA OPCIÓN:");
+            _style.PrintBold(":eight_pointed_star:  ELIGE UNA OPCIÓN:");
         }
 
     }

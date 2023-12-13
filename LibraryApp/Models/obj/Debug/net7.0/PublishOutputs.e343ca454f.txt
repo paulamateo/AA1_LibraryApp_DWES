@@ -1,4 +1,0 @@
-C:\Users\paula\OneDrive\Documentos\NexVerse_Library\LibraryApp\Models\bin\Debug\net7.0\publish\LibraryApp.Models.dll
-C:\Users\paula\OneDrive\Documentos\NexVerse_Library\LibraryApp\Models\bin\Debug\net7.0\publish\LibraryApp.Models.deps.json
-C:\Users\paula\OneDrive\Documentos\NexVerse_Library\LibraryApp\Models\bin\Debug\net7.0\publish\LibraryApp.Models.pdb
-C:\Users\paula\OneDrive\Documentos\NexVerse_Library\LibraryApp\Models\bin\Debug\net7.0\publish\Spectre.Console.dll

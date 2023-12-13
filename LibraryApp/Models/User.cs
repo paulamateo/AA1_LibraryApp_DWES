@@ -8,6 +8,7 @@ public class User {
     public int PhoneNumber { get; set; }
     public int UserNumber = 1;
     public string UserAccountNumber { get; }
+     public DateTime AccountCreationDate { get; }
     public List<string[]> History { get; set; } = new List<string[]>();
     
     public User(string name, string lastname, string email, string password, int phoneNumber) {
@@ -19,6 +20,7 @@ public class User {
         UserAccountNumber = UserNumber.ToString();
         UserNumber++;
         History = new List<string[]>();
+        AccountCreationDate = DateTime.Now;
     }
 
 }

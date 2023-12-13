@@ -2,7 +2,6 @@ using LibraryApp.Data;
 
 namespace LibraryApp.Business {
     public class LibraryService : ILibraryService {
-
         private readonly ILibraryRepository _repository;
 
         public LibraryService(ILibraryRepository repository) {
@@ -45,6 +44,10 @@ namespace LibraryApp.Business {
             return filmRow;
         }
 
+        public string? GetLinkByTitle(string title) {
+            return _repository.GetAllLinks(title);
+        }
+
 
         /*GESTION USUARIOS*/
         public bool CreateUser(string name, string lastname, string email, string password, int phoneNumber) {
@@ -70,6 +73,17 @@ namespace LibraryApp.Business {
                 return false;
             }
         }
+
+        public bool SearchAuthor(string author) {
+            List<string> booksByAuthor = _repository.GetBooksByAuthor(author);
+            bool authorExists = booksByAuthor.Count > 0;
+            return authorExists;
+        }
+
+        public List<string> GetBooksByAuthor(string author) {
+            return _repository.GetBooksByAuthor(author);
+        }
+
 
     }
 
