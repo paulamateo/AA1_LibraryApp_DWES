@@ -8,7 +8,7 @@ La aplicación "NexVerse Library" se erige como una biblioteca multimedia online
 
 La experiencia de ser un usuario de “NexVerse Library” implica disfrutar de las diversas **características** que ofrece este programa:
 - Acceso a un amplio catálogo: Los usuarios tienen la posibilidad de explorar un extenso catálogo que abarca tanto libros como películas. Esta biblioteca en línea permite un acceso inmediato a los contenidos, brindando información detallada sobre cada obra, como título, autor/director, duración/páginas, año de publicación, género, entre otros.
-- Motor de búsqueda eficiente: “NexVerse Library” cuenta con un motor de búsqueda que facilita a los usuarios encontrar rápidamente el libro o la película que desean introduciendo el título de la película o libro que quieren.
+- Motor de búsqueda eficiente: “NexVerse Library” cuenta con un motor de búsqueda que facilita a los usuarios encontrar rápidamente el libro o la película que desean introduciendo el título o el autor del libro, o el título de la película que quieran.
 - Historial de visualización y lectura: Cada usuario dispone de una "cuartilla" personalizada que documenta las obras que ha consumido de la biblioteca. Este historial, además de los títulos, incluye la fecha en la que se solicitó el recurso. Esta función permite a los usuarios realizar un seguimiento detallado de lo que ya ha leído o visualizado de la biblioteca.
 
 ## Arquitectura por capas: Comandos
