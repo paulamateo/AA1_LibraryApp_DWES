@@ -1,38 +1,47 @@
 using LibraryApp.Business;
 using Spectre.Console;
+using System;
 
-namespace LibraryApp.Presentation {
-    public class Menu {
+namespace LibraryApp.Presentation
+{
+    public class Menu
+    {
         private readonly ILibraryService _libraryService;
         private readonly LogService _logService;
         private readonly Style _style;
 
-        public Menu(ILibraryService libraryService, LogService logService) {
+        public Menu(ILibraryService libraryService, LogService logService)
+        {
             _libraryService = libraryService;
             _logService = logService;
             _style = new Style();
         }
 
-        public void DisplayError(string errorMessage) {
+        public void DisplayError(string errorMessage)
+        {
             _style.PrintError(errorMessage);
             _logService.LogError(errorMessage);
         }
 
-        public void DisplayWelcome() { 
-            _style.PrintInfo("BIBLIOTECA MULTIMEDIA 'NEXVERSE'\n");
+        public void DisplayWelcome()
+        {
+            _style.PrintInfo("\n:books::house:  BIBLIOTECA MULTIMEDIA 'NEXVERSE'\n");
         }
 
-        public void DisplayMainMenu() {
+        public void DisplayMainMenu()
+        {
             _style.PrintMenu("1 - Crear cuenta\n2 - Iniciar sesión\n3 - Salir");
         }
 
-        public void DisplaySecondMenu() {
+        public void DisplaySecondMenu()
+        {
             Console.WriteLine("");
-            _style.PrintMenu("1 - Buscar\n2 - Mostrar libros disponibles\n3 - Mostrar películas disponibles\n4 - Historial del usuario\n5 - Volver");
+            _style.PrintMenu("1 - Buscar\n2 - Mostrar libros disponibles\n3 - Mostrar películas disponibles\n4 - Historial del usuario\n5 - Volver\n6 - Ver datos usuario");
         }
 
-        public (string? name, string? lastname, string? email, string? password, int phoneNumber) DisplayPanelforCreateAccount() {
-            DisplayOptionTitle("CREAR CUENTA");
+        public (string? name, string? lastname, string? email, string? password, int phoneNumber) DisplayPanelforCreateAccount()
+        {
+            DisplayOptionTitle(":ghost:  CREAR CUENTA");
             _style.PrintBold("\nNombre:");
             string? name = Console.ReadLine();
             _style.PrintBold("Apellidos:");
@@ -40,34 +49,67 @@ namespace LibraryApp.Presentation {
             _style.PrintBold("Correo electrónico:");
             string? email = Console.ReadLine();
             int phoneNumber;
-            while (true) {
+            while (true)
+            {
                 _style.PrintBold("Teléfono:");
                 string? phoneNumberInput = Console.ReadLine();
-                if (ValidatePhoneNumberLength(phoneNumberInput)) {
+                if (ValidatePhoneNumberLength(phoneNumberInput))
+                {
                     phoneNumber = Convert.ToInt32(phoneNumberInput);
                     break;
                 }
             }
-            _style.PrintBold("Contraseña:");
-            string? password = Console.ReadLine();
+            string? password = ReadPasswordFromConsole();
             return (name, lastname, email, password, phoneNumber);
         }
 
-        public bool ValidatePhoneNumberLength(string phoneNumber) {
-            if (phoneNumber.Length != 9) {
+        public bool ValidatePhoneNumberLength(string phoneNumber)
+        {
+            if (phoneNumber.Length != 9)
+            {
                 DisplayError("El número de teléfono debe tener nueve caracteres.");
                 return false;
             }
             return true;
         }
 
-        public (string? email, string? password) DisplayPanelforLogin() {
-            DisplayOptionTitle("INICIAR SESIÓN");
+        public (string? email, string? password) DisplayPanelforLogin()
+        {
+            DisplayOptionTitle(":desktop_computer:  INICIAR SESIÓN");
             _style.PrintBold("\nCorreo electrónico:");
             string? email = Console.ReadLine();
-            _style.PrintBold("Contraseña:");
-            string? password = Console.ReadLine();
+            string? password = ReadPasswordFromConsole();
             return (email, password);
+        }
+
+        private string ReadPasswordFromConsole()
+        {
+            _style.PrintBold("Contraseña:");
+            string password = "";
+
+            ConsoleKeyInfo key;
+            do
+            {
+                key = Console.ReadKey(intercept: true);
+
+                if (key.Key == ConsoleKey.Backspace)
+                {
+                    if (password.Length > 0)
+                    {
+                        password = password.Substring(0, password.Length - 1);
+                        Console.Write("\b \b"); 
+                    }
+                }
+                else if (char.IsLetterOrDigit(key.KeyChar))
+                {
+                    password += key.KeyChar;
+                    Console.Write("*");
+                }
+
+            } while (key.Key != ConsoleKey.Enter);
+
+            Console.WriteLine(); 
+            return password;
         }
 
         public void DisplayPanelforActions() {

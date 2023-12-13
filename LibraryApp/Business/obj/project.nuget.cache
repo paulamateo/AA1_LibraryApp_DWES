@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "3PJ7mpazZZbMvARWtryIteHvMl/dRJRA7i+ggwuffBiSXp8NgCYUQSMY2v5nE0nq+Nzf8NzDYDhjGld6KRakVA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Eva\\Desktop\\EVA\\NexVerse_Library\\LibraryApp\\Business\\LibraryApp.Business.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Eva\\.nuget\\packages\\spectre.console\\0.48.0\\spectre.console.0.48.0.nupkg.sha512",
+    "C:\\Users\\Eva\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512"
+  ],
+  "logs": []
+}
