@@ -107,6 +107,18 @@ namespace LibraryApp.Data {
             return null;
         }
 
+        public List<string> GetBooksByAuthor(string author) {
+            List<string> booksByAuthor = new List<string>();
+
+            foreach (var book in _books) {
+                if (book.Value.Author.Equals(author, StringComparison.OrdinalIgnoreCase)) {
+                    booksByAuthor.Add(book.Value.Title);
+                }
+            }
+
+            return booksByAuthor;
+        }
+
 
         /*GESTION USUARIOS*/
         public void AddUserToDictionary(string name, string lastname, string email, string password, int phoneNumber) {

@@ -1,0 +1,209 @@
+{
+  "version": 3,
+  "targets": {
+    "net7.0": {
+      "Spectre.Console/0.48.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.5"
+        },
+        "compile": {
+          "lib/net7.0/Spectre.Console.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/Spectre.Console.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Memory/4.5.5": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.1/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/_._": {}
+        }
+      },
+      "LibraryApp.Business/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "LibraryApp.Data": "1.0.0",
+          "Spectre.Console": "0.48.0"
+        },
+        "compile": {
+          "bin/placeholder/LibraryApp.Business.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LibraryApp.Business.dll": {}
+        }
+      },
+      "LibraryApp.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "LibraryApp.Models": "1.0.0",
+          "Spectre.Console": "0.48.0"
+        },
+        "compile": {
+          "bin/placeholder/LibraryApp.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LibraryApp.Data.dll": {}
+        }
+      },
+      "LibraryApp.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Spectre.Console": "0.48.0"
+        },
+        "compile": {
+          "bin/placeholder/LibraryApp.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LibraryApp.Models.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Spectre.Console/0.48.0": {
+      "sha512": "4Mc1UT7Azgtyb8FyNwK5FZmoZbKuT5PmY7ZwaKUytjD5kGFMNBACpOZTwYtkuY377YkYtZYBeDDTJUwTW86QXw==",
+      "type": "package",
+      "path": "spectre.console/0.48.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net6.0/Spectre.Console.dll",
+        "lib/net6.0/Spectre.Console.xml",
+        "lib/net7.0/Spectre.Console.dll",
+        "lib/net7.0/Spectre.Console.xml",
+        "lib/net8.0/Spectre.Console.dll",
+        "lib/net8.0/Spectre.Console.xml",
+        "lib/netstandard2.0/Spectre.Console.dll",
+        "lib/netstandard2.0/Spectre.Console.xml",
+        "small-logo.png",
+        "spectre.console.0.48.0.nupkg.sha512",
+        "spectre.console.nuspec"
+      ]
+    },
+    "System.Memory/4.5.5": {
+      "sha512": "XIWiDvKPXaTveaB7HVganDlOCRoj03l+jrwNvcge/t8vhGYKvqV+dMv6G4SAX2NoNmN0wZfVPTAlFwZcZvVOUw==",
+      "type": "package",
+      "path": "system.memory/4.5.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Memory.dll",
+        "lib/net461/System.Memory.xml",
+        "lib/netcoreapp2.1/_._",
+        "lib/netstandard1.1/System.Memory.dll",
+        "lib/netstandard1.1/System.Memory.xml",
+        "lib/netstandard2.0/System.Memory.dll",
+        "lib/netstandard2.0/System.Memory.xml",
+        "ref/netcoreapp2.1/_._",
+        "system.memory.4.5.5.nupkg.sha512",
+        "system.memory.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "LibraryApp.Business/1.0.0": {
+      "type": "project",
+      "path": "../Business/LibraryApp.Business.csproj",
+      "msbuildProject": "../Business/LibraryApp.Business.csproj"
+    },
+    "LibraryApp.Data/1.0.0": {
+      "type": "project",
+      "path": "../Data/LibraryApp.Data.csproj",
+      "msbuildProject": "../Data/LibraryApp.Data.csproj"
+    },
+    "LibraryApp.Models/1.0.0": {
+      "type": "project",
+      "path": "../Models/LibraryApp.Models.csproj",
+      "msbuildProject": "../Models/LibraryApp.Models.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net7.0": [
+      "LibraryApp.Business >= 1.0.0",
+      "LibraryApp.Data >= 1.0.0",
+      "Spectre.Console >= 0.48.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\paula\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\paula\\Documents\\NexVerse_Library\\LibraryApp\\Presentation\\LibraryApp.Presentation.csproj",
+      "projectName": "LibraryApp.Presentation",
+      "projectPath": "C:\\Users\\paula\\Documents\\NexVerse_Library\\LibraryApp\\Presentation\\LibraryApp.Presentation.csproj",
+      "packagesPath": "C:\\Users\\paula\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\paula\\Documents\\NexVerse_Library\\LibraryApp\\Presentation\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\paula\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net7.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "projectReferences": {
+            "C:\\Users\\paula\\Documents\\NexVerse_Library\\LibraryApp\\Business\\LibraryApp.Business.csproj": {
+              "projectPath": "C:\\Users\\paula\\Documents\\NexVerse_Library\\LibraryApp\\Business\\LibraryApp.Business.csproj"
+            },
+            "C:\\Users\\paula\\Documents\\NexVerse_Library\\LibraryApp\\Data\\LibraryApp.Data.csproj": {
+              "projectPath": "C:\\Users\\paula\\Documents\\NexVerse_Library\\LibraryApp\\Data\\LibraryApp.Data.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net7.0": {
+        "targetAlias": "net7.0",
+        "dependencies": {
+          "Spectre.Console": {
+            "target": "Package",
+            "version": "[0.48.0, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.310\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

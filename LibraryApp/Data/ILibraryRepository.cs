@@ -12,6 +12,7 @@ namespace LibraryApp.Data {
         List<string[]> GetHistory();
         void SetCurrentUser(string email);
         string? GetAllLinks(string title);
+        List<string> GetBooksByAuthor(string author);
 
     }
 

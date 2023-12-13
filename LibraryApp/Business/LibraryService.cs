@@ -74,6 +74,17 @@ namespace LibraryApp.Business {
             }
         }
 
+        public bool SearchAuthor(string author) {
+            List<string> booksByAuthor = _repository.GetBooksByAuthor(author);
+            bool authorExists = booksByAuthor.Count > 0;
+            return authorExists;
+        }
+
+        public List<string> GetBooksByAuthor(string author) {
+            return _repository.GetBooksByAuthor(author);
+        }
+
+
     }
 
 }
