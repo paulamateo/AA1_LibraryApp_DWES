@@ -7,6 +7,7 @@ namespace LibraryApp.Presentation {
         private readonly LogService _logService;
         private readonly Style _style;
 
+        
         public Menu(ILibraryService libraryService, LogService logService) {
             _libraryService = libraryService;
             _logService = logService;
@@ -28,7 +29,7 @@ namespace LibraryApp.Presentation {
 
         public void DisplaySecondMenu() {
             Console.WriteLine("");
-            _style.PrintMenu("1 - Buscar\n2 - Mostrar libros disponibles\n3 - Mostrar películas disponibles\n4 - Historial del usuario\n5 - Volver\n6 - Ver datos usuario");
+            _style.PrintMenu("1 - Buscar\n2 - Mostrar libros disponibles\n3 - Mostrar películas disponibles\n4 - Historial del usuario\n5 - Volver");
         }
 
         public (string? name, string? lastname, string? email, string? password, int phoneNumber) DisplayPanelforCreateAccount() {
@@ -142,9 +143,9 @@ namespace LibraryApp.Presentation {
 
         public void DisplaySearch() {
             _style.PrintOptionTitle("BÚSQUEDA DE LIBROS Y PELÍCULAS"); 
-            Console.WriteLine("1 - Buscar por título (libro o película)");
-            Console.WriteLine("2 - Buscar por autor (libro)");
-            _style.PrintWarning("¡Recuerda! Debes escribirlo bien.\n");
+            Console.WriteLine("1 - Buscar por TÍTULO (libro o película)");
+            Console.WriteLine("2 - Buscar por AUTOR (libro)");
+            _style.PrintWarning("¡Recuerda! Debes escribirlo bien.");
             Console.WriteLine("\nElige una opción:");
             var option = Convert.ToInt32(Console.ReadLine());
             switch (option) {
@@ -167,31 +168,34 @@ namespace LibraryApp.Presentation {
             if (_libraryService.SearchFunctionality(title)) {
                 ProcessSearchResult(title);
             } else {
-                AnsiConsole.MarkupLine("Lo sentimos, no tenemos ese título.  :broken_heart:\n");
+                AnsiConsole.MarkupLine("Lo sentimos, no tenemos ese título. :broken_heart:\n");
             }
         }
 
         private void SearchByAuthor() {
             _style.PrintBold("Autor:");
-            string author = Console.ReadLine();
-
+            string? author = Console.ReadLine();
+            Console.WriteLine("");
             if (_libraryService.SearchAuthor(author)) {
-                _style.PrintBold($"\n¡Sí, tenemos a '{author}' en nuestras estanterías! :grinning_face:\n¿Te gustaría leer alguna obra suya? Escribe 1 (SÍ) / 2 (NO)");
+                _style.PrintBold($"\n¡Sí, tenemos a {author} en nuestras estanterías! :grinning_face:\n¿Te gustaría leer alguna obra suya? Escribe 1 (SÍ) / 2 (NO)");
                 var answerAuthor = Convert.ToInt32(Console.ReadLine());
 
                 if (answerAuthor == 1) {
+                    Console.WriteLine("");
                     List<string> booksByAuthor = _libraryService.GetBooksByAuthor(author);
 
                     if (booksByAuthor.Count > 0) {
-                        Console.WriteLine($"\nLibros de '{author}':");
+                        var table = new Table();
+                            table.AddColumn(new TableColumn($"LIBROS DE {author}").Centered());
                         foreach (var bookTitle in booksByAuthor) {
-                            Console.WriteLine(bookTitle);
-                        }
+                            table.AddRow(bookTitle);
+                        }  
+                        AnsiConsole.Write(table);
 
                         Console.WriteLine("\nLibro escogido:");
-                        string selectedTitle = Console.ReadLine();
+                        string? selectedTitle = Console.ReadLine();
 
-                        if (booksByAuthor.Contains(selectedTitle, StringComparer.OrdinalIgnoreCase)) {
+                        if (booksByAuthor.Contains(selectedTitle)) {
                             ProcessSearchResult(selectedTitle);
                         } else {
                             Console.WriteLine($"No tenemos ese libro asociado con {author}.");
@@ -203,7 +207,7 @@ namespace LibraryApp.Presentation {
                     DisplayError("¡Esa opción no existe!\n");
                 }
             }else {
-                AnsiConsole.MarkupLine("Lo sentimos, no tenemos a ese autor en nuestras estanterías.  :broken_heart:\n");
+                AnsiConsole.MarkupLine("Lo sentimos, no tenemos a ese autor en nuestras estanterías. :broken_heart:\n");
             }
         }
 
@@ -214,7 +218,7 @@ namespace LibraryApp.Presentation {
             switch(answer) {
                 case 1:
                     _libraryService.AddItemToHistory(title);
-                    _style.PrintItem($"\nDisfruta de {title} abriendo el siguiente enlace en tu navegador:");
+                    _style.PrintItem($"\nDisfruta de '{title}' abriendo el siguiente enlace en tu navegador:");
                     string? link = _libraryService.GetLinkByTitle(title);
                     Console.WriteLine($"{link}");
                     break;
@@ -226,7 +230,6 @@ namespace LibraryApp.Presentation {
                     break;
             }
         }
-
 
         public void DisplayHistorialAccount() {
             _style.PrintOptionTitle(":clipboard:  HISTORIAL DE VISUALIZACIÓN Y LECTURA"); 
