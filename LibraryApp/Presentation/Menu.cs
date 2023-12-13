@@ -258,6 +258,7 @@ namespace LibraryApp.Presentation {
             var tableHistory = new Table()
                 .AddColumn("Fecha de escogida")    
                 .AddColumn("Título")
+                .AddColumn("Fecha devolución")
             ;
             foreach (var row in history) {
                 tableHistory.AddRow(row);

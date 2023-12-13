@@ -28,12 +28,16 @@ namespace LibraryApp.Data {
         }
 
         public void AddItemToHistory(string title) {
+            var dateReservation = DateTime.Now.ToString("yyyy-MM-dd"); 
+            var dateReturn = DateTime.Now.AddDays(14).ToString("yyyy-MM-dd"); 
+
             if (_currentUser != null) {
-                string[] item = new string[] { DateTime.Now.ToString(), title };
+                string[] item = new string[] { dateReservation, title, dateReturn }; 
                 _currentUser.History.Add(item);
                 SaveUserToJson(_currentUser);
             }
         }
+
 
         public List<string[]> GetHistory() {
             return _currentUser?.History ?? new List<string[]>();
