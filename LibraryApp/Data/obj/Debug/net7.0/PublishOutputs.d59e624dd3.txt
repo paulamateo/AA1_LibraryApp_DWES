@@ -1,0 +1,6 @@
+C:\Users\paula\OneDrive\Documentos\NexVerse_Library\LibraryApp\Data\bin\Debug\net7.0\publish\LibraryApp.Data.dll
+C:\Users\paula\OneDrive\Documentos\NexVerse_Library\LibraryApp\Data\bin\Debug\net7.0\publish\LibraryApp.Data.deps.json
+C:\Users\paula\OneDrive\Documentos\NexVerse_Library\LibraryApp\Data\bin\Debug\net7.0\publish\LibraryApp.Data.pdb
+C:\Users\paula\OneDrive\Documentos\NexVerse_Library\LibraryApp\Data\bin\Debug\net7.0\publish\Spectre.Console.dll
+C:\Users\paula\OneDrive\Documentos\NexVerse_Library\LibraryApp\Data\bin\Debug\net7.0\publish\LibraryApp.Models.dll
+C:\Users\paula\OneDrive\Documentos\NexVerse_Library\LibraryApp\Data\bin\Debug\net7.0\publish\LibraryApp.Models.pdb
