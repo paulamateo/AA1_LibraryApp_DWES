@@ -11,6 +11,8 @@ namespace LibraryApp.Business {
         List<string[]> GetHistoryRows();
         void SetCurrentUser(string email);
         string? GetLinkByTitle(string title);
+        bool SearchAuthor(string author);
+        List<string> GetBooksByAuthor(string author);
 
     }
 }
